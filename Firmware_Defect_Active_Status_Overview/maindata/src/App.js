@@ -113,7 +113,7 @@ class App extends Component {
         for(var i=0;i<result.Beijing.series.length;i++){
             result.Beijing.series[i]['xAxisIndex']=0;
             result.Beijing.series[i]['yAxisIndex']=0;
-            result.Beijing.series[i]['barWidth']=21;
+            result.Beijing.series[i]['barWidth']=22;
             result.Beijing.series[i]['stack']='总量一';
             result.Beijing.series[i]['type']='bar';
             result.Beijing.series[i]['label']={
