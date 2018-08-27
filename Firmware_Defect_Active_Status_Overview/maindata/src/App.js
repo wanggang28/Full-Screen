@@ -110,10 +110,10 @@ class App extends Component {
           this.state.mapData.yAxis[3].data=result.USA.xAxis;
           this.state.mapData.legend.data=result.Beijing.legend;
          // console.log(result)
-        for(var i=5;i<result.Beijing.series.length;i++){
+        for(var i=0;i<result.Beijing.series.length;i++){
             result.Beijing.series[i]['xAxisIndex']=0;
             result.Beijing.series[i]['yAxisIndex']=0;
-            result.Beijing.series[i]['barWidth']=23;
+            result.Beijing.series[i]['barWidth']=21;
             result.Beijing.series[i]['stack']='总量一';
             result.Beijing.series[i]['type']='bar';
             result.Beijing.series[i]['label']={
@@ -135,10 +135,10 @@ class App extends Component {
             };
             this.state.mapData.series.push(result.Beijing.series[i]);
         }
-        for(var i=5;i<result.Shanghai.series.length;i++){
+        for(var i=0;i<result.Shanghai.series.length;i++){
             result.Shanghai.series[i]['xAxisIndex']=1;
             result.Shanghai.series[i]['yAxisIndex']=1;
-            result.Shanghai.series[i]['barWidth']=23;
+            //result.Shanghai.series[i]['barWidth']=21;
             result.Shanghai.series[i]['stack']='总量二';
             result.Shanghai.series[i]['type']='bar';
             result.Shanghai.series[i]['label']={
@@ -160,10 +160,10 @@ class App extends Component {
             };
             this.state.mapData.series.push(result.Shanghai.series[i]);
         }
-        for(var i=5;i<result.Taiwan.series.length;i++){
+        for(var i=0;i<result.Taiwan.series.length;i++){
             result.Taiwan.series[i]['xAxisIndex']=2;
             result.Taiwan.series[i]['yAxisIndex']=2;
-            result.Taiwan.series[i]['barWidth']=23;
+            result.Taiwan.series[i]['barWidth']=21;
             result.Taiwan.series[i]['stack']='总量三';
             result.Taiwan.series[i]['type']='bar';
             result.Taiwan.series[i]['label']={
@@ -185,10 +185,10 @@ class App extends Component {
             };
             this.state.mapData.series.push(result.Taiwan.series[i]);
         }
-        for(var i=5;i<result.USA.series.length;i++){
+        for(var i=0;i<result.USA.series.length;i++){
             result.USA.series[i]['xAxisIndex']=3;
             result.USA.series[i]['yAxisIndex']=3;
-            result.USA.series[i]['barWidth']=23;
+            result.USA.series[i]['barWidth']=21;
             result.USA.series[i]['stack']='总量四';
             result.USA.series[i]['type']='bar';
             result.USA.series[i]['label']={
@@ -222,7 +222,7 @@ class App extends Component {
           for(var i=0;i<result.chart.series.length;i++){
             result.chart.series[i]['xAxisIndex']=4;
             result.chart.series[i]['yAxisIndex']=4;
-            result.chart.series[i]['barWidth']=23;
+            result.chart.series[i]['barWidth']=21;
             result.chart.series[i]['stack']='总量五';
             result.chart.series[i]['type']='bar';
             result.chart.series[i]['label']={

@@ -276,6 +276,7 @@ var series = [];
             name:"",
             type:"bar",
             xAxisIndex:5,
+            barWidth : 21,
             yAxisIndex:5,
             stack:"总",
             itemStyle:{
@@ -291,33 +292,50 @@ var series = [];
             data:[1,4,5,3,4]
             },
             {
-            name:"",
+            name:"BBFV",
             type:"bar",
+            barWidth : 21,
             xAxisIndex:5,
+            markLine : {
+                lineStyle: {
+                    normal: {
+                        type: 'solid',
+                        color:'#f00',
+                        
+                    }
+                },
+                textStyle:{
+                    normal: {
+                        color:'#f00',
+                        
+                    }
+                },
+                data : [
+                    //{type : 'average', name: '平均值'},
+                    { xAxis: 15.6 }
+                ]
+            },
             yAxisIndex:5,
             stack:"总",
             label:{
                 normal: {
                     show: true,
                     textStyle:{
-                            fontSize:'18'
+                            fontSize:'12'
                     },
                     position: 'inside',
                     formatter: function(params) {
                     
-                    if (params.value > 0) {
-                        return params.value;
-                    } else {
-                        return '';
-                    }
-                },
+                        return params.seriesName;
+                    },
                 },
             },
             data:[3,1,4,1,2]
             },
             {
-            name:"",
+            name:"SDV",
             type:"bar",
+            barWidth : 21,
             xAxisIndex:5,
             yAxisIndex:5,
             stack:"总",
@@ -325,24 +343,21 @@ var series = [];
                 normal: {
                     show: true,
                     textStyle:{
-                            fontSize:'18'
+                            fontSize:'12'
                     },
                     position: 'inside',
                     formatter: function(params) {
                     
-                    if (params.value > 0) {
-                        return params.value;
-                    } else {
-                        return '';
-                    }
+                    return params.seriesName;
                 },
                 },
             },
             data:[2,1,4,1,2]
             },
             {
-            name:"",
+            name:"SIT",
             type:"bar",
+            barWidth : 21,
             xAxisIndex:5,
             yAxisIndex:5,
             stack:"总",
@@ -350,24 +365,21 @@ var series = [];
                 normal: {
                     show: true,
                     textStyle:{
-                            fontSize:'18'
+                            fontSize:'12'
                     },
                     position: 'inside',
                     formatter: function(params) {
                     
-                    if (params.value > 0) {
-                        return params.value;
-                    } else {
-                        return '';
-                    }
+                    return params.seriesName;
                 },
                 },
             },
             data:[4,4,2,2,1]
             },
             {
-            name:"",
+            name:"SVT",
             type:"bar",
+            barWidth : 21,
             xAxisIndex:5,
             yAxisIndex:5,
             stack:"总",
@@ -375,16 +387,12 @@ var series = [];
                 normal: {
                     show: true,
                     textStyle:{
-                            fontSize:'18'
+                            fontSize:'12'
                     },
                     position: 'inside',
                     formatter: function(params) {
                     
-                    if (params.value > 0) {
-                        return params.value;
-                    } else {
-                        return '';
-                    }
+                    return params.seriesName;
                 },
                 },
             },
@@ -393,6 +401,7 @@ var series = [];
             {
             name:"Others",
             type:"bar",
+            barWidth : 21,
             xAxisIndex:5,
             yAxisIndex:5,
             stack:"总",
@@ -400,16 +409,12 @@ var series = [];
                 normal: {
                     show: true,
                     textStyle:{
-                            fontSize:'18'
+                            fontSize:'12'
                     },
                     position: 'inside',
                     formatter: function(params) {
                     
-                    if (params.value > 0) {
-                        return params.value;
-                    } else {
-                        return '';
-                    }
+                    return params.seriesName;
                 },
                 },
             },
@@ -562,7 +567,7 @@ export const mapOption = {
         },
     ],
     legend: {
-            x: "right",
+            x: "78%",
             y: '6%',
             // width:30,
             // height:20,
@@ -584,14 +589,14 @@ export const mapOption = {
         right:'30%',
         width: '23%',
         height:'17%',
-        top: '48%',
+        top: '51%',
         containLabel: true,
     },
       {
         right:'5%',
         width: '23%',
         height:'17%',
-        top: '48%',
+        top: '51%',
         containLabel: true,
     },
     {
@@ -602,19 +607,19 @@ export const mapOption = {
         containLabel: true,
     },
     {
-        top:'70%',
+        top:'73%',
         //left: '66%',
         width:'33%',
-        height:'27%',
+        height:'24%',
         right: '34%',
         bottom: '3%',
         containLabel: true
     },
     {
-        top:'70%',
+        top:'73%',
         //left: '66%',
         width:'33%',
-        height:'27%',
+        height:'24%',
         right: '1%',
         bottom: '3%',
         containLabel: true
@@ -740,19 +745,18 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
                 color: '#fff'
             }
           },
-        axisLabel : {
-        formatter: function (value){
-                 var date = new Array();
-                //var i = 1;
-                for(var i=0;i<22;i++){
-                    var date_formatter = new Date('7-8');
-                    var date_time = ((date_formatter.getMonth()+1)+"-"+(date_formatter.getDate()+i));
-                    date.push(date_time)
-                    //start_time = start_time + i*24*60*60*1000;
-               }
-               ;
+        splitNumber: 12,
+        boundaryGap:[0,0.1],
+        axisLabel: {
+            formatter: function(params,value) {
+                var date = new Array();
+                var values;
                 console.log(date);
-                return date[value*1];
+                console.log(params/2);
+               // console.log(value);
+                
+                return (value+1) + '月';
+                
             }
         },
     }
@@ -787,6 +791,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
         },
         gridIndex: 1,
         axisLabel:{
+            interval:1,
             textStyle:{
                 color: '#fff',
                 fontSize:'18'
@@ -841,7 +846,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
     },
     {
         type: 'category',
-        name:'Firmware Defect',
+        name:'Project Defect',
         nameTextStyle : {
             color: "#fff",
             fontSize : '18'
@@ -862,7 +867,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
     },
     {
         type:"category",
-        name:'Firmware Project Process',
+        name:'Project Process Schedule',
         nameTextStyle : {
             color: "#fff",
             fontSize : '18'
