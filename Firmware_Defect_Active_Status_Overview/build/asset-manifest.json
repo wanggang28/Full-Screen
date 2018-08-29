@@ -5,16 +5,16 @@
   "CandlestickReact.js.map": "static/js/CandlestickReact.58094f6c.chunk.js.map",
   "LineReact.js": "static/js/LineReact.55e254b7.chunk.js",
   "LineReact.js.map": "static/js/LineReact.55e254b7.chunk.js.map",
-  "MapReact.js": "static/js/MapReact.c6230ca3.chunk.js",
-  "MapReact.js.map": "static/js/MapReact.c6230ca3.chunk.js.map",
+  "MapReact.js": "static/js/MapReact.deca6c4b.chunk.js",
+  "MapReact.js.map": "static/js/MapReact.deca6c4b.chunk.js.map",
   "PieReact.js": "static/js/PieReact.8d1278ac.chunk.js",
   "PieReact.js.map": "static/js/PieReact.8d1278ac.chunk.js.map",
   "RadarReact.js": "static/js/RadarReact.9338ff99.chunk.js",
   "RadarReact.js.map": "static/js/RadarReact.9338ff99.chunk.js.map",
   "ScatterReact.js": "static/js/ScatterReact.6c556dce.chunk.js",
   "ScatterReact.js.map": "static/js/ScatterReact.6c556dce.chunk.js.map",
-  "main.css": "static/css/main.9d5252a7.css",
-  "main.css.map": "static/css/main.9d5252a7.css.map",
-  "main.js": "static/js/main.1ae49bd2.js",
-  "main.js.map": "static/js/main.1ae49bd2.js.map"
+  "main.css": "static/css/main.434d7bff.css",
+  "main.css.map": "static/css/main.434d7bff.css.map",
+  "main.js": "static/js/main.e44d4b87.js",
+  "main.js.map": "static/js/main.e44d4b87.js.map"
 }
