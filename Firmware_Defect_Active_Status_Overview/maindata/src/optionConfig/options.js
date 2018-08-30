@@ -272,70 +272,37 @@ var series = [];
             }),
         },
 
-        {
-            name:"",
-            type:"bar",
-            xAxisIndex:5,
-            barWidth : 21,
-            yAxisIndex:5,
-            stack:"总",
-            itemStyle:{
-                normal:{
-                barBorderColor:'rgba(0,0,0,0)',
-                color:'rgba(0,0,0,0)'
-                },
-                emphasis:{
-                barBorderColor:'rgba(0,0,0,0)',
-                color:'rgba(0,0,0,0)'
-                }
-            },
-            data:[1,4,5,3,4]
-            },
+    
             {
-            name:"BBFV",
+            name:"OWR",
             type:"bar",
-            barWidth : 21,
+            barWidth : 19,
             xAxisIndex:5,
-            markLine : {
-                lineStyle: {
-                    normal: {
-                        type: 'solid',
-                        color:'#f00',
-                        
-                    }
-                },
-                textStyle:{
-                    normal: {
-                        color:'#f00',
-                        
-                    }
-                },
-                data : [
-                    //{type : 'average', name: '平均值'},
-                    { xAxis: 15.6 }
-                ]
-            },
             yAxisIndex:5,
             stack:"总",
             label:{
                 normal: {
                     show: true,
                     textStyle:{
-                            fontSize:'12'
+                            fontSize:'18'
                     },
                     position: 'inside',
                     formatter: function(params) {
                     
-                        return params.seriesName;
-                    },
-                },
+                    if (params.value > 0) {
+                        return params.value;
+                    } else {
+                        return '';
+                    }
+                },}
             },
             data:[3,1,4,1,2]
             },
+        
             {
-            name:"SDV",
+            name:"Sev1&2",
             type:"bar",
-            barWidth : 21,
+            barWidth : 19,
             xAxisIndex:5,
             yAxisIndex:5,
             stack:"总",
@@ -343,43 +310,49 @@ var series = [];
                 normal: {
                     show: true,
                     textStyle:{
-                            fontSize:'12'
+                            fontSize:'18'
                     },
                     position: 'inside',
                     formatter: function(params) {
                     
-                    return params.seriesName;
-                },
-                },
+                    if (params.value > 0) {
+                        return params.value;
+                    } else {
+                        return '';
+                    }
+                },}
             },
             data:[2,1,4,1,2]
             },
             {
-            name:"SIT",
+            name:"Sev3&4",
             type:"bar",
-            barWidth : 21,
+            barWidth : 19,
             xAxisIndex:5,
             yAxisIndex:5,
             stack:"总",
             label:{
                 normal: {
                     show: true,
-                    textStyle:{
-                            fontSize:'12'
+                   textStyle:{
+                            fontSize:'18'
                     },
                     position: 'inside',
                     formatter: function(params) {
                     
-                    return params.seriesName;
-                },
+                    if (params.value > 0) {
+                        return params.value;
+                    } else {
+                        return '';
+                    }}
                 },
             },
             data:[4,4,2,2,1]
             },
             {
-            name:"SVT",
+            name:"FV",
             type:"bar",
-            barWidth : 21,
+            barWidth : 19,
             xAxisIndex:5,
             yAxisIndex:5,
             stack:"总",
@@ -387,39 +360,21 @@ var series = [];
                 normal: {
                     show: true,
                     textStyle:{
-                            fontSize:'12'
+                            fontSize:'18'
                     },
                     position: 'inside',
                     formatter: function(params) {
                     
-                    return params.seriesName;
-                },
+                    if (params.value > 0) {
+                        return params.value;
+                    } else {
+                        return '';
+                    }}
                 },
             },
             data:[2,3,2,1,3]
             },
-            {
-            name:"Others",
-            type:"bar",
-            barWidth : 21,
-            xAxisIndex:5,
-            yAxisIndex:5,
-            stack:"总",
-            label:{
-                normal: {
-                    show: true,
-                    textStyle:{
-                            fontSize:'12'
-                    },
-                    position: 'inside',
-                    formatter: function(params) {
-                    
-                    return params.seriesName;
-                },
-                },
-            },
-            data:[1,5,2,5,4]
-            }
+            
             
         //one
         // {
@@ -549,7 +504,24 @@ var series = [];
 
     );
 });
-
+// var t = setTimeout(time,1000);//開始运行
+// function time()
+//     {
+//         clearTimeout(t);//清除定时器
+//         var dt = new Date();
+//         var nowDate=dt.getFullYear()+'.'+(dt.getMonth()+1)+'.'+dt.getDate();
+//         var h=dt.getHours();//获取时
+//         var m=dt.getMinutes();//获取分
+//         var s=dt.getSeconds();//获取秒
+//         h=(h>=10)?h:'0'+h;
+//         m=(m>=10)?m:'0'+m;
+//         s=(s>=10)?s:'0'+s;
+//         var time =  h+":"+m+":"+s;
+//         var date_time= nowDate+'--'+time
+//         console.log(h+":"+m+":"+s)
+//         t = setTimeout(time,1000); //设定定时器，循环运行     
+//     } 
+ 
 export const mapOption = {
     backgroundColor: '#1f1d1d',
     textStyle: {
@@ -562,13 +534,14 @@ export const mapOption = {
             y: '2%',                    
             textStyle: {
                 color: '#fff',
-                fontSize: 40
+                fontSize: 50
             },
         },
     ],
     legend: {
-            x: "78%",
-            y: '6%',
+            right:'2%',
+            bottom:'1%',
+            //type: 'scroll',
             // width:30,
             // height:20,
             textStyle:{
@@ -580,34 +553,34 @@ export const mapOption = {
     grid:[
     {
         right:'5%',
-        width: '23%',
-        height:'16%',
-        top: '13%',
+        width: '24%',
+        height:'15%',
+        top: '12%',
         containLabel: true,
       },
     {
-        right:'30%',
-        width: '23%',
-        height:'17%',
-        top: '51%',
+        right:'20%',
+        width: '24%',
+        height:'15%',
+        top: '29%',
         containLabel: true,
     },
       {
-        right:'5%',
-        width: '23%',
-        height:'17%',
-        top: '51%',
-        containLabel: true,
-    },
-    {
-        left:'3%',
-        width: '23%',
+        right:'1%',
+        width: '25%',
         height:'15%',
-        top: '28%',
+        top: '47%',
         containLabel: true,
     },
     {
-        top:'73%',
+        left:'2%',
+        width: '22%',
+        height:'15%',
+        top: '29%',
+        containLabel: true,
+    },
+    {
+        top:'71%',
         //left: '66%',
         width:'33%',
         height:'24%',
@@ -616,7 +589,7 @@ export const mapOption = {
         containLabel: true
     },
     {
-        top:'73%',
+        top:'71%',
         //left: '66%',
         width:'33%',
         height:'24%',
@@ -625,7 +598,7 @@ export const mapOption = {
         containLabel: true
     },
 ],
-color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
+color:['#489eea','#d63c55','#a756e9','#7aab42'],
     // tooltip: {
     //     trigger: 'item',
     //     backgroundColor: 'rgba(12, 204, 104, 0.92)',
@@ -657,6 +630,12 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
             textStyle:{
                 color: '#fff'
             },
+            formatter:function(value){
+                if(parseInt(value)!=value){
+                    value=''
+                }
+                    return value;
+            }
           },
           axisLine:{
             lineStyle:{
@@ -674,6 +653,12 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
             textStyle:{
                 color: '#fff'
             },
+            formatter:function(value){
+                if(parseInt(value)!=value){
+                    value=''
+                }
+                    return value;
+            }
           },
           axisLine:{
             lineStyle:{
@@ -690,6 +675,12 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
             textStyle:{
                 color: '#fff'
             },
+            formatter:function(value){
+                if(parseInt(value)!=value){
+                    value=''
+                }
+                    return value;
+            }
           },
           axisLine:{
             lineStyle:{
@@ -706,6 +697,12 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
             textStyle:{
                 color: '#fff'
             },
+            formatter:function(value){
+                if(parseInt(value)!=value){
+                    value=''
+                }
+                    return value;
+            }
           },
           axisLine:{
             lineStyle:{
@@ -722,6 +719,12 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
             textStyle:{
                 color: '#fff'
             },
+            formatter:function(value){
+                if(parseInt(value)!=value){
+                    value=''
+                }
+                    return value;
+            }
           },
           axisLine:{
             lineStyle:{
@@ -730,7 +733,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
           },
     },
     {
-        type : 'value',
+        type: 'value',
         gridIndex: 5,
         splitLine:{
 		    show:false
@@ -739,41 +742,34 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
             textStyle:{
                 color: '#fff'
             },
+            formatter:function(value){
+                if(parseInt(value)!=value){
+                    value=''
+                }
+                    return value;
+            }
           },
           axisLine:{
             lineStyle:{
                 color: '#fff'
             }
           },
-        splitNumber: 12,
-        boundaryGap:[0,0.1],
-        axisLabel: {
-            formatter: function(params,value) {
-                var date = new Array();
-                var values;
-                console.log(date);
-                console.log(params/2);
-               // console.log(value);
-                
-                return (value+1) + '月';
-                
-            }
-        },
-    }
+    },
+    
     ],
     yAxis: [
     {
         type: 'category',
-        name:'Beijing',
-        nameTextStyle : {
-            color: "#fff",
-            fontSize : '18'
-        },
+        // name:'Beijing',
+        // nameTextStyle : {
+        //     color: "#fff",
+        //     fontSize : '16'
+        // },
         gridIndex: 0,
         axisLabel:{
             textStyle:{
                 color: '#fff',
-                fontSize:'18'
+                fontSize:'14'
             },
           },
           axisLine:{
@@ -784,17 +780,16 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
         data: ''
     },{
         type: 'category',
-        name:'Shanghai',
-        nameTextStyle : {
-            color: "#fff",
-            fontSize : '18'
-        },
+        // name:'Shanghai',
+        // nameTextStyle : {
+        //     color: "#fff",
+        //     fontSize : '16'
+        // },
         gridIndex: 1,
         axisLabel:{
-            interval:1,
             textStyle:{
                 color: '#fff',
-                fontSize:'18'
+                fontSize:'14'
             },
           },
           axisLine:{
@@ -802,19 +797,19 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
                 color: '#fff'
             }
           },
-        data: ''
+        data: []
     },{
         type: 'category',
-        name:'Taipei',
-        nameTextStyle : {
-            color: "#fff",
-            fontSize : '18'
-        },
+        // name:'Taipei',
+        // nameTextStyle : {
+        //     color: "#fff",
+        //     fontSize : '16'
+        // },
         gridIndex: 2,
         axisLabel:{
             textStyle:{
                 color: '#fff',
-                fontSize:'18'
+                fontSize:'14'
             },
           },
           axisLine:{
@@ -825,16 +820,16 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
         data:''
     },{
         type: 'category',
-        name:'Morrisville',
-        nameTextStyle : {
-            color: "#fff",
-            fontSize : '18'
-        },
+        // name:'Morrisville',
+        // nameTextStyle : {
+        //     color: "#fff",
+        //     fontSize : '16'
+        // },
         gridIndex: 3,
         axisLabel:{
             textStyle:{
                 color: '#fff',
-                fontSize:'18'
+                fontSize:'14'
             },
           },
           axisLine:{
@@ -846,16 +841,16 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
     },
     {
         type: 'category',
-        name:'Project Defect',
+        name:'Project Defect - XCC',
         nameTextStyle : {
             color: "#fff",
-            fontSize : '18'
+            fontSize : '18',
         },
         gridIndex: 4,
         axisLabel:{
           textStyle:{
               color: '#fff',
-              fontSize:'18'
+              fontSize:'16'
           },
         },
         axisLine:{
@@ -866,17 +861,17 @@ color:['#489eea','#d63c55','#a756e9','#7aab42','#d87419'],
         data: ''
     },
     {
-        type:"category",
-        name:'Project Process Schedule',
+        type:"category",  
+        name:'Project Defect - UEFI',
         nameTextStyle : {
             color: "#fff",
-            fontSize : '18'
+            fontSize : '18',
         },
         gridIndex: 5,
         axisLabel:{
           textStyle:{
               color: '#fff',
-              fontSize:'18'
+              fontSize:'16'
           },
         },
         axisLine:{

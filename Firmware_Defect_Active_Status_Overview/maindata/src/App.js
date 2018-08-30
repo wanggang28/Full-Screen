@@ -18,10 +18,6 @@ const columns = [{
   dataIndex: 'release',
   key: 'release',
 }, {
-  title: 'Phase',
-  dataIndex: 'phase',
-  key: 'phase',
-}, {
   title: 'Next_Milestone',
   dataIndex: 'nextmilestone',
   key: 'nextmilestone',
@@ -37,32 +33,27 @@ const pagination={
 const data = [{
   key: '1',
   release: 'Purley MLK',
-  phase: 'SDV',
-  nextmilestone: 'SDV Exit 08/24/2018',
+  nextmilestone: 'SDV Exit Aug/30',
   details: 'O/W/R: 4 (6). 3',
 }, {
   key: '2',
   release: 'Meholw',
-  phase: 'SDV',
-  nextmilestone: 'SDV Exit 08/23/2018',
+  nextmilestone: 'SDV Exit Aug/30',
   details: 'O/W/R: 6 (17). 19',
 }, {
   key: '3',
   release: '18D Block',
-  phase: 'BBFV',
-  nextmilestone: 'BBFV Entry 08/27/2018',
+  nextmilestone: 'BBFV Entry Aug/30',
   details: 'O/W/R: 4 (6). 3',
 },{
   key: '4',
   release: 'A2',
-  phase: 'BBFV',
-  nextmilestone: 'BBFV Entry 08/27/2018',
+  nextmilestone: 'BBFV Entry Aug/30',
   details: 'O/W/R: 4 (6). 3',
 },{
   key: '5',
   release: 'A2 MLK',
-  phase: 'BBFV',
-  nextmilestone: 'BBFV Entry 08/27/2018',
+  nextmilestone: 'BBFV Entry Aug/30',
   details: 'O/W/R: 4 (6). 3',
 }];
 
@@ -73,7 +64,18 @@ class App extends Component {
       width: props.width,
       height: props.height,
       mapData : mapOption,
+      time:new Date()
     }
+    setInterval(function(){
+ 
+	        this.setState({
+ 
+	            time:new Date()
+ 
+	        });
+ 
+	  }.bind(this),1000);
+
   }
 
   componentDidMount() {
@@ -103,7 +105,7 @@ class App extends Component {
   // }
   
   getmapData(){
-      $.get('http://fw.core.lenovo.com/dv/table/grid?name=site_manager_owr&q=18D%20Total',function(result){
+      $.get('http://fw.core.lenovo.com/dv/chart/overall?name=release_owr&name=site_manager_owr&q=18D%20Total&q=MLK%20Total&q=A2%20Total&q=Mehlow%20Total&q=A2_MLK_Total ',function(result){
           this.state.mapData.yAxis[0].data=result.Beijing.xAxis;
           this.state.mapData.yAxis[1].data=result.Shanghai.xAxis;
           this.state.mapData.yAxis[2].data=result.Taiwan.xAxis;
@@ -113,7 +115,7 @@ class App extends Component {
         for(var i=0;i<result.Beijing.series.length;i++){
             result.Beijing.series[i]['xAxisIndex']=0;
             result.Beijing.series[i]['yAxisIndex']=0;
-            result.Beijing.series[i]['barWidth']=22;
+            result.Beijing.series[i]['barWidth']=19;
             result.Beijing.series[i]['stack']='总量一';
             result.Beijing.series[i]['type']='bar';
             result.Beijing.series[i]['label']={
@@ -138,7 +140,7 @@ class App extends Component {
         for(var i=0;i<result.Shanghai.series.length;i++){
             result.Shanghai.series[i]['xAxisIndex']=1;
             result.Shanghai.series[i]['yAxisIndex']=1;
-            //result.Shanghai.series[i]['barWidth']=21;
+            result.Shanghai.series[i]['barWidth']=19;
             result.Shanghai.series[i]['stack']='总量二';
             result.Shanghai.series[i]['type']='bar';
             result.Shanghai.series[i]['label']={
@@ -163,7 +165,7 @@ class App extends Component {
         for(var i=0;i<result.Taiwan.series.length;i++){
             result.Taiwan.series[i]['xAxisIndex']=2;
             result.Taiwan.series[i]['yAxisIndex']=2;
-            result.Taiwan.series[i]['barWidth']=21;
+            result.Taiwan.series[i]['barWidth']=19;
             result.Taiwan.series[i]['stack']='总量三';
             result.Taiwan.series[i]['type']='bar';
             result.Taiwan.series[i]['label']={
@@ -188,7 +190,7 @@ class App extends Component {
         for(var i=0;i<result.USA.series.length;i++){
             result.USA.series[i]['xAxisIndex']=3;
             result.USA.series[i]['yAxisIndex']=3;
-            result.USA.series[i]['barWidth']=21;
+            result.USA.series[i]['barWidth']=19;
             result.USA.series[i]['stack']='总量四';
             result.USA.series[i]['type']='bar';
             result.USA.series[i]['label']={
@@ -211,18 +213,11 @@ class App extends Component {
             this.state.mapData.series.push(result.USA.series[i]);
         }
         
-        console.log(this.state.mapData)
-        console.log(result)
-        this.setState(this.state);            
-       }.bind(this));
-
-      $.get('http://fw.core.lenovo.com/dv/chart/overall?name=release_owr&q=18D%20Total&q=MLK%20Total&q=A2%20Total&q=Mehlow%20Total&q=A2_MLK_Total',function(result){
-          console.log(result)
-          this.state.mapData.yAxis[4].data=result.chart.xAxis;
+        this.state.mapData.yAxis[4].data=result.chart.xAxis;
           for(var i=0;i<result.chart.series.length;i++){
             result.chart.series[i]['xAxisIndex']=4;
             result.chart.series[i]['yAxisIndex']=4;
-            result.chart.series[i]['barWidth']=21;
+            result.chart.series[i]['barWidth']=19;
             result.chart.series[i]['stack']='总量五';
             result.chart.series[i]['type']='bar';
             result.chart.series[i]['label']={
@@ -243,9 +238,10 @@ class App extends Component {
                 },
             };
             this.state.mapData.series.push(result.chart.series[i]);
-        }
+        } 
+           
         console.log(this.state.mapData)
-        //console.log(result)
+        console.log(result)
         this.setState(this.state);            
        }.bind(this));
       
@@ -254,9 +250,11 @@ class App extends Component {
   
   render() {
     return (
+      
       <div className="main_charts" style={ { width: this.state.width, height: this.state.height } }>
-          <div className="main_top"><MapReact option={mapOption}/></div>
-          <div className="main_bottom"><Table columns={columns} dataSource={data} pagination={pagination}/></div>
+          <div className='time'>{this.state.time.toLocaleDateString().replace(/\//g,".")} {this.state.time.toLocaleTimeString('chinese',{hour12:false})}</div>
+          <div className="main_top"><MapReact option={mapOption} /></div>
+          <Table columns={columns} dataSource={data} pagination={pagination}/>
       </div>
     );
   }
