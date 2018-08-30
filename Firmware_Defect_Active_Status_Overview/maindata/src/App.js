@@ -213,14 +213,14 @@ class App extends Component {
             this.state.mapData.series.push(result.USA.series[i]);
         }
         
-        this.state.mapData.yAxis[4].data=result.chart.xAxis;
-          for(var i=0;i<result.chart.series.length;i++){
-            result.chart.series[i]['xAxisIndex']=4;
-            result.chart.series[i]['yAxisIndex']=4;
-            result.chart.series[i]['barWidth']=19;
-            result.chart.series[i]['stack']='总量五';
-            result.chart.series[i]['type']='bar';
-            result.chart.series[i]['label']={
+        this.state.mapData.yAxis[4].data=result.imm.xAxis;
+          for(var i=0;i<result.imm.series.length;i++){
+            result.imm.series[i]['xAxisIndex']=4;
+            result.imm.series[i]['yAxisIndex']=4;
+            result.imm.series[i]['barWidth']=19;
+            result.imm.series[i]['stack']='总量五';
+            result.imm.series[i]['type']='bar';
+            result.imm.series[i]['label']={
                 normal: {
                     show: true,
                     textStyle:{
@@ -237,7 +237,34 @@ class App extends Component {
                 },
                 },
             };
-            this.state.mapData.series.push(result.chart.series[i]);
+            this.state.mapData.series.push(result.imm.series[i]);
+        } 
+
+        this.state.mapData.yAxis[5].data=result.uefi.xAxis;
+          for(var i=0;i<result.uefi.series.length;i++){
+            result.uefi.series[i]['xAxisIndex']=5;
+            result.uefi.series[i]['yAxisIndex']=5;
+            result.uefi.series[i]['barWidth']=19;
+            result.uefi.series[i]['stack']='总量六';
+            result.uefi.series[i]['type']='bar';
+            result.uefi.series[i]['label']={
+                normal: {
+                    show: true,
+                    textStyle:{
+                            fontSize:'18'
+                    },
+                    position: 'inside',
+                    formatter: function(params) {
+                    
+                    if (params.value > 0) {
+                        return params.value;
+                    } else {
+                        return '';
+                    }
+                },
+                },
+            };
+            this.state.mapData.series.push(result.uefi.series[i]);
         } 
            
         console.log(this.state.mapData)
