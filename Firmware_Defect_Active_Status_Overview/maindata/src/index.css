@@ -8,7 +8,7 @@ body {
     .ant-table-wrapper{
         width: 31%;
         position: absolute;
-        bottom: 53px;
+        bottom: 43px;
         left:1%;
     }
     .ant-table-thead > tr > th, .ant-table-tbody > tr > td{

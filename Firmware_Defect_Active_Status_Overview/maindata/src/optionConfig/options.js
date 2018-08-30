@@ -3,79 +3,61 @@
  */
 //堆叠图
 import $ from 'jquery'
-// export const stackbarOption={
-//     // title:{
-//     //     text: "18D Block",
-//     //     x: "center",
-//     //     y: '2%',
-//     //     textStyle: {
-//     //         color: '#fff',
-//     //         fontSize: 20
-//     //     },
-//     // },
-//     tooltip : {
-//         trigger: 'axis',
-//         axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-//             type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-//         }
-//     },
-//     color:['#02157d','#d87419','#d63c55','#a756e9','#7aab42'],
-//     grid: {
-//         top:'15%',
-//         left: '5%',
-//         right: '5%',
-//         bottom: '3%',
-//         containLabel: true
-//     },
-//     xAxis:  {
-//         type: 'value',
-//         axisLabel:{
-//           textStyle:{
-//               color: '#fff'
-//           },
-//         },
-//         data:['周一','周二','周三','周四'],
-//         splitLine:{
-// 		    show:false
-// 	    },
-//         axisLine:{
-//           lineStyle:{
-//               color: '#fff'
-//           }
-//         },
-//     },
-//     yAxis: {
-//         type: 'category',
-//         name:'Firmware Active Defect',
-//         nameTextStyle : {
-//             color: "#fff",
-//             fontSize : '18'
-//         },
-//         axisLabel:{
-//           textStyle:{
-//               color: '#fff',
-//               fontSize:'18'
-//           },
-//         },
-//         axisLine:{
-//           lineStyle:{
-//               color: '#fff'
-//           }
-//         },
-//         data: ''
-//     },
-//     series: [
-//         {
-//             type:'line',
-//             name:'table',
-//             label:{
-//                 formatter:function(value,params){
-//                     var table='<table border="1"><tbody>'+'<tr><th>'+value+'</th></tr>'+'<tr><tr>'+params+'</tr></tr>'+'</tbody></table>'
-//                 }
-//             }
-//         }
-//     ]
-// }
+export const stackbarOption={
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    color:['#02157d','#d87419','#d63c55','#a756e9','#7aab42'],
+    grid: {
+        right:'5%',
+        width: '24%',
+        height:'15%',
+        top: '12%',
+        containLabel: true,
+      },
+    xAxis:  {
+        type: 'value',
+        splitLine:{
+		    show:false
+	    },
+        axisLabel:{
+            textStyle:{
+                color: '#fff'
+            },
+            formatter:function(value){
+                if(parseInt(value)!=value){
+                    value=''
+                }
+                    return value;
+            }
+          },
+          axisLine:{
+            lineStyle:{
+                color: '#fff'
+            }
+          },
+    },
+    yAxis: {
+        type: 'category',
+        gridIndex: 0,
+        axisLabel:{
+            textStyle:{
+                color: '#fff',
+                fontSize:'14'
+            },
+          },
+          axisLine:{
+            lineStyle:{
+                color: '#fff'
+            }
+          },
+        data: ''
+    },
+    series: []
+}
 
 
 //世界地图数据
@@ -285,23 +267,7 @@ var series = [];
 
     );
 });
-// var t = setTimeout(time,1000);//開始运行
-// function time()
-//     {
-//         clearTimeout(t);//清除定时器
-//         var dt = new Date();
-//         var nowDate=dt.getFullYear()+'.'+(dt.getMonth()+1)+'.'+dt.getDate();
-//         var h=dt.getHours();//获取时
-//         var m=dt.getMinutes();//获取分
-//         var s=dt.getSeconds();//获取秒
-//         h=(h>=10)?h:'0'+h;
-//         m=(m>=10)?m:'0'+m;
-//         s=(s>=10)?s:'0'+s;
-//         var time =  h+":"+m+":"+s;
-//         var date_time= nowDate+'--'+time
-//         console.log(h+":"+m+":"+s)
-//         t = setTimeout(time,1000); //设定定时器，循环运行     
-//     } 
+
  
 export const mapOption = {
     backgroundColor: '#1f1d1d',
@@ -334,28 +300,28 @@ export const mapOption = {
     grid:[
     {
         right:'5%',
-        width: '24%',
+        width: '20%',
         height:'15%',
         top: '12%',
         containLabel: true,
       },
     {
         right:'20%',
-        width: '24%',
+        width: '20%',
         height:'15%',
         top: '29%',
         containLabel: true,
     },
       {
         right:'1%',
-        width: '25%',
+        width: '20%',
         height:'15%',
         top: '47%',
         containLabel: true,
     },
     {
-        left:'2%',
-        width: '22%',
+        left:'5%',
+        width: '20%',
         height:'15%',
         top: '29%',
         containLabel: true,
@@ -406,7 +372,10 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
         gridIndex: 0,
         splitLine:{
 		    show:false
-	    },
+        },
+        interval: 100000,
+        showMinLabel: true,
+        showMaxLabel: true,
         axisLabel:{
             textStyle:{
                 color: '#fff'
@@ -429,7 +398,10 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
         gridIndex: 1,
         splitLine:{
 		    show:false
-	    },
+        },
+        interval: 100000,
+        showMinLabel: true,
+        showMaxLabel: true,
         axisLabel:{
             textStyle:{
                 color: '#fff'
@@ -451,7 +423,10 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
         gridIndex: 2,
         splitLine:{
 		    show:false
-	    },
+        },
+        interval: 100000,
+        showMinLabel: true,
+        showMaxLabel: true,
         axisLabel:{
             textStyle:{
                 color: '#fff'
@@ -473,7 +448,10 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
         gridIndex: 3,
         splitLine:{
 		    show:false
-	    },
+        },
+        interval: 100000,
+        showMinLabel: true,
+        showMaxLabel: true,
         axisLabel:{
             textStyle:{
                 color: '#fff'
@@ -493,6 +471,9 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
     },{
         type: 'value',
         gridIndex: 4,
+        interval: 100000,
+        showMinLabel: true,
+        showMaxLabel: true,
         splitLine:{
 		    show:false
 	    },
@@ -518,7 +499,10 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
         gridIndex: 5,
         splitLine:{
 		    show:false
-	    },
+        },
+        interval: 100000,
+        showMinLabel: true,
+        showMaxLabel: true,
         axisLabel:{
             textStyle:{
                 color: '#fff'
@@ -550,7 +534,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
         axisLabel:{
             textStyle:{
                 color: '#fff',
-                fontSize:'14'
+                fontSize:'16'
             },
           },
           axisLine:{
@@ -570,7 +554,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
         axisLabel:{
             textStyle:{
                 color: '#fff',
-                fontSize:'14'
+                fontSize:'16'
             },
           },
           axisLine:{
@@ -590,7 +574,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
         axisLabel:{
             textStyle:{
                 color: '#fff',
-                fontSize:'14'
+                fontSize:'16'
             },
           },
           axisLine:{
@@ -610,7 +594,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
         axisLabel:{
             textStyle:{
                 color: '#fff',
-                fontSize:'14'
+                fontSize:'16'
             },
           },
           axisLine:{

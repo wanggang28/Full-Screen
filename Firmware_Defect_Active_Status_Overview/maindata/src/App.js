@@ -33,27 +33,27 @@ const pagination={
 const data = [{
   key: '1',
   release: 'Purley MLK',
-  nextmilestone: 'SDV Exit Aug/30',
+  nextmilestone: 'SDV Exit Aug 30',
   details: 'O/W/R: 4 (6). 3',
 }, {
   key: '2',
   release: 'Meholw',
-  nextmilestone: 'SDV Exit Aug/30',
+  nextmilestone: 'SDV Exit Aug 30',
   details: 'O/W/R: 6 (17). 19',
 }, {
   key: '3',
   release: '18D Block',
-  nextmilestone: 'BBFV Entry Aug/30',
+  nextmilestone: 'BBFV Entry Aug 30',
   details: 'O/W/R: 4 (6). 3',
 },{
   key: '4',
   release: 'A2',
-  nextmilestone: 'BBFV Entry Aug/30',
+  nextmilestone: 'BBFV Entry Aug 30',
   details: 'O/W/R: 4 (6). 3',
 },{
   key: '5',
   release: 'A2 MLK',
-  nextmilestone: 'BBFV Entry Aug/30',
+  nextmilestone: 'BBFV Entry Aug 30',
   details: 'O/W/R: 4 (6). 3',
 }];
 
