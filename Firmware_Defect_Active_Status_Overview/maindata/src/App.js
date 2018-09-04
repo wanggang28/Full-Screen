@@ -115,8 +115,12 @@ class App extends Component {
         for(var i=0;i<result.Beijing.series.length;i++){
             result.Beijing.series[i]['xAxisIndex']=0;
             result.Beijing.series[i]['yAxisIndex']=0;
-            result.Beijing.series[i]['barWidth']=19;
-            result.Beijing.series[i]['stack']='总量一';
+            result.Beijing.series[i]['barWidth']=12;
+            if(result.Beijing.series[i].name=="OWR"||result.Beijing.series[i].name=="FV"){
+                result.Beijing.series[i]['stack']='owr1';
+            }else{
+                 result.Beijing.series[i]['stack']='ser1';
+            }
             result.Beijing.series[i]['type']='bar';
             result.Beijing.series[i]['label']={
                 normal: {
@@ -138,10 +142,16 @@ class App extends Component {
             this.state.mapData.series.push(result.Beijing.series[i]);
         }
         for(var i=0;i<result.Shanghai.series.length;i++){
+            console.log(result.Shanghai)
             result.Shanghai.series[i]['xAxisIndex']=1;
             result.Shanghai.series[i]['yAxisIndex']=1;
-            result.Shanghai.series[i]['barWidth']=19;
-            result.Shanghai.series[i]['stack']='总量二';
+            result.Shanghai.series[i]['barWidth']=12;
+            if(result.Shanghai.series[i].name=="OWR"||result.Shanghai.series[i].name=="FV"){
+                result.Shanghai.series[i]['stack']='owr2';
+            }else{
+                 result.Shanghai.series[i]['stack']='ser2';
+            }
+            
             result.Shanghai.series[i]['type']='bar';
             result.Shanghai.series[i]['label']={
                 normal: {
@@ -160,13 +170,18 @@ class App extends Component {
                 },
                 },
             };
+            console.log(result.Shanghai.series[i])
             this.state.mapData.series.push(result.Shanghai.series[i]);
         }
         for(var i=0;i<result.Taiwan.series.length;i++){
             result.Taiwan.series[i]['xAxisIndex']=2;
             result.Taiwan.series[i]['yAxisIndex']=2;
-            result.Taiwan.series[i]['barWidth']=19;
-            result.Taiwan.series[i]['stack']='总量三';
+            result.Taiwan.series[i]['barWidth']=12;
+            if(result.Taiwan.series[i].name=="OWR"||result.Taiwan.series[i].name=="FV"){
+                result.Taiwan.series[i]['stack']='owr3';
+            }else{
+                 result.Taiwan.series[i]['stack']='ser3';
+            }
             result.Taiwan.series[i]['type']='bar';
             result.Taiwan.series[i]['label']={
                 normal: {
@@ -190,8 +205,12 @@ class App extends Component {
         for(var i=0;i<result.USA.series.length;i++){
             result.USA.series[i]['xAxisIndex']=3;
             result.USA.series[i]['yAxisIndex']=3;
-            result.USA.series[i]['barWidth']=19;
-            result.USA.series[i]['stack']='总量四';
+            result.USA.series[i]['barWidth']=12;
+            if(result.USA.series[i].name=="OWR"||result.USA.series[i].name=="FV"){
+                result.USA.series[i]['stack']='owr4';
+            }else{
+                 result.USA.series[i]['stack']='ser4';
+            }
             result.USA.series[i]['type']='bar';
             result.USA.series[i]['label']={
                 normal: {
@@ -217,8 +236,12 @@ class App extends Component {
           for(var i=0;i<result.imm.series.length;i++){
             result.imm.series[i]['xAxisIndex']=4;
             result.imm.series[i]['yAxisIndex']=4;
-            result.imm.series[i]['barWidth']=19;
-            result.imm.series[i]['stack']='总量五';
+            result.imm.series[i]['barWidth']=12;
+            if(result.imm.series[i].name=="OWR"||result.imm.series[i].name=="FV"){
+                result.imm.series[i]['stack']='owr5';
+            }else{
+                 result.imm.series[i]['stack']='ser5';
+            }
             result.imm.series[i]['type']='bar';
             result.imm.series[i]['label']={
                 normal: {
@@ -244,8 +267,12 @@ class App extends Component {
           for(var i=0;i<result.uefi.series.length;i++){
             result.uefi.series[i]['xAxisIndex']=5;
             result.uefi.series[i]['yAxisIndex']=5;
-            result.uefi.series[i]['barWidth']=19;
-            result.uefi.series[i]['stack']='总量六';
+            result.uefi.series[i]['barWidth']=12;
+            if(result.uefi.series[i].name=="OWR"||result.uefi.series[i].name=="FV"){
+                result.uefi.series[i]['stack']='owr6';
+            }else{
+                 result.uefi.series[i]['stack']='ser6';
+            }
             result.uefi.series[i]['type']='bar';
             result.uefi.series[i]['label']={
                 normal: {
