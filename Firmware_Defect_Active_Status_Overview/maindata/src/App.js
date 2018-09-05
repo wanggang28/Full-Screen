@@ -32,29 +32,29 @@ const pagination={
 }
 const data = [{
   key: '1',
-  release: 'Purley MLK',
-  nextmilestone: 'SDV Exit Aug 30',
-  details: 'O/W/R: 4 (6). 3',
+  release: '',
+  nextmilestone: '',
+  details: '',
 }, {
   key: '2',
-  release: 'Meholw',
-  nextmilestone: 'SDV Exit Aug 30',
-  details: 'O/W/R: 6 (17). 19',
+  release: '',
+  nextmilestone: '',
+  details: '',
 }, {
   key: '3',
-  release: '18D Block',
-  nextmilestone: 'BBFV Entry Aug 30',
-  details: 'O/W/R: 4 (6). 3',
+  release: '',
+  nextmilestone: '',
+  details: '',
 },{
   key: '4',
-  release: 'A2',
-  nextmilestone: 'BBFV Entry Aug 30',
-  details: 'O/W/R: 4 (6). 3',
+  release: '',
+  nextmilestone: '',
+  details: '',
 },{
   key: '5',
-  release: 'A2 MLK',
-  nextmilestone: 'BBFV Entry Aug 30',
-  details: 'O/W/R: 4 (6). 3',
+  release: '',
+  nextmilestone: '',
+  details: '',
 }];
 
 class App extends Component {
@@ -95,7 +95,6 @@ class App extends Component {
         width = window.innerWidth;
         height =window.innerHeight;
       this.setState({ width, height });
-      console.log(this.state)
     } catch (ignore) {
     }
   }
@@ -111,11 +110,15 @@ class App extends Component {
           this.state.mapData.yAxis[2].data=result.Taiwan.xAxis;
           this.state.mapData.yAxis[3].data=result.USA.xAxis;
           this.state.mapData.legend.data=result.Beijing.legend;
-         // console.log(result)
+        for(var i=0;i<result.table.data.length;i++){
+            data[i].release=result.table.data[i].release;
+            data[i].nextmilestone=result.table.data[i].nextMilestone;
+            data[i].details=result.table.data[i].details;
+        }
         for(var i=0;i<result.Beijing.series.length;i++){
             result.Beijing.series[i]['xAxisIndex']=0;
             result.Beijing.series[i]['yAxisIndex']=0;
-            result.Beijing.series[i]['barWidth']=12;
+            result.Beijing.series[i]['barWidth']=8;
             if(result.Beijing.series[i].name=="OWR"||result.Beijing.series[i].name=="FV"){
                 result.Beijing.series[i]['stack']='owr1';
             }else{
@@ -126,7 +129,7 @@ class App extends Component {
                 normal: {
                     show: true,
                     textStyle:{
-                            fontSize:'18'
+                            fontSize:'16'
                     },
                     position: 'inside',
                     formatter: function(params) {
@@ -142,10 +145,9 @@ class App extends Component {
             this.state.mapData.series.push(result.Beijing.series[i]);
         }
         for(var i=0;i<result.Shanghai.series.length;i++){
-            console.log(result.Shanghai)
             result.Shanghai.series[i]['xAxisIndex']=1;
             result.Shanghai.series[i]['yAxisIndex']=1;
-            result.Shanghai.series[i]['barWidth']=12;
+            result.Shanghai.series[i]['barWidth']=8;
             if(result.Shanghai.series[i].name=="OWR"||result.Shanghai.series[i].name=="FV"){
                 result.Shanghai.series[i]['stack']='owr2';
             }else{
@@ -157,7 +159,7 @@ class App extends Component {
                 normal: {
                     show: true,
                     textStyle:{
-                            fontSize:'18'
+                            fontSize:'16'
                     },
                     position: 'inside',
                     formatter: function(params) {
@@ -170,13 +172,12 @@ class App extends Component {
                 },
                 },
             };
-            console.log(result.Shanghai.series[i])
             this.state.mapData.series.push(result.Shanghai.series[i]);
         }
         for(var i=0;i<result.Taiwan.series.length;i++){
             result.Taiwan.series[i]['xAxisIndex']=2;
             result.Taiwan.series[i]['yAxisIndex']=2;
-            result.Taiwan.series[i]['barWidth']=12;
+            result.Taiwan.series[i]['barWidth']=8;
             if(result.Taiwan.series[i].name=="OWR"||result.Taiwan.series[i].name=="FV"){
                 result.Taiwan.series[i]['stack']='owr3';
             }else{
@@ -187,7 +188,7 @@ class App extends Component {
                 normal: {
                     show: true,
                     textStyle:{
-                            fontSize:'18'
+                            fontSize:'16'
                     },
                     position: 'inside',
                     formatter: function(params) {
@@ -205,7 +206,7 @@ class App extends Component {
         for(var i=0;i<result.USA.series.length;i++){
             result.USA.series[i]['xAxisIndex']=3;
             result.USA.series[i]['yAxisIndex']=3;
-            result.USA.series[i]['barWidth']=12;
+            result.USA.series[i]['barWidth']=8;
             if(result.USA.series[i].name=="OWR"||result.USA.series[i].name=="FV"){
                 result.USA.series[i]['stack']='owr4';
             }else{
@@ -216,7 +217,7 @@ class App extends Component {
                 normal: {
                     show: true,
                     textStyle:{
-                            fontSize:'18'
+                            fontSize:'16'
                     },
                     position: 'inside',
                     formatter: function(params) {
@@ -236,7 +237,7 @@ class App extends Component {
           for(var i=0;i<result.imm.series.length;i++){
             result.imm.series[i]['xAxisIndex']=4;
             result.imm.series[i]['yAxisIndex']=4;
-            result.imm.series[i]['barWidth']=12;
+            result.imm.series[i]['barWidth']=8;
             if(result.imm.series[i].name=="OWR"||result.imm.series[i].name=="FV"){
                 result.imm.series[i]['stack']='owr5';
             }else{
@@ -247,7 +248,7 @@ class App extends Component {
                 normal: {
                     show: true,
                     textStyle:{
-                            fontSize:'18'
+                            fontSize:'16'
                     },
                     position: 'inside',
                     formatter: function(params) {
@@ -267,7 +268,7 @@ class App extends Component {
           for(var i=0;i<result.uefi.series.length;i++){
             result.uefi.series[i]['xAxisIndex']=5;
             result.uefi.series[i]['yAxisIndex']=5;
-            result.uefi.series[i]['barWidth']=12;
+            result.uefi.series[i]['barWidth']=8;
             if(result.uefi.series[i].name=="OWR"||result.uefi.series[i].name=="FV"){
                 result.uefi.series[i]['stack']='owr6';
             }else{
@@ -278,7 +279,7 @@ class App extends Component {
                 normal: {
                     show: true,
                     textStyle:{
-                            fontSize:'18'
+                            fontSize:'16'
                     },
                     position: 'inside',
                     formatter: function(params) {
@@ -294,8 +295,6 @@ class App extends Component {
             this.state.mapData.series.push(result.uefi.series[i]);
         } 
            
-        console.log(this.state.mapData)
-        console.log(result)
         this.setState(this.state);            
        }.bind(this));
       
