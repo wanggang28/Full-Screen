@@ -270,6 +270,7 @@ var series = [];
 
  
 export const mapOption = {
+    color:['#489eea','#7aab42','#a756e9','#d63c55'],
     backgroundColor: '#1f1d1d',
     textStyle: {
         color: '#fff'
@@ -286,6 +287,7 @@ export const mapOption = {
         },
     ],
     legend: {
+            //color:['#489eea','#d63c55','#7aab42','#a756e9'],
             right:'2%',
             bottom:'1%',
             //type: 'scroll',
@@ -345,7 +347,7 @@ export const mapOption = {
         containLabel: true
     },
 ],
-color:['#489eea','#d63c55','#a756e9','#7aab42'],
+
     // tooltip: {
     //     trigger: 'item',
     //     backgroundColor: 'rgba(12, 204, 104, 0.92)',
@@ -373,6 +375,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
         splitLine:{
 		    show:false
         },
+        show:false,
         interval: 100000,
         showMinLabel: true,
         showMaxLabel: true,
@@ -396,6 +399,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
         {
         type: 'value',
         gridIndex: 1,
+        show:false,
         splitLine:{
 		    show:false
         },
@@ -421,6 +425,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
     },{
         type: 'value',
         gridIndex: 2,
+        show:false,
         splitLine:{
 		    show:false
         },
@@ -446,6 +451,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
     },{
         type: 'value',
         gridIndex: 3,
+        show:false,
         splitLine:{
 		    show:false
         },
@@ -538,10 +544,12 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
             },
           },
           axisLine:{
+            show:false,
             lineStyle:{
                 color: '#fff'
             }
           },
+        axisTick:{show:false},
         data: ''
     },{
         type: 'category',
@@ -551,6 +559,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
         //     fontSize : '16'
         // },
         gridIndex: 1,
+        axisTick:{show:false},
         axisLabel:{
             textStyle:{
                 color: '#fff',
@@ -558,6 +567,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
             },
           },
           axisLine:{
+            show:false,
             lineStyle:{
                 color: '#fff'
             }
@@ -571,6 +581,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
         //     fontSize : '16'
         // },
         gridIndex: 2,
+        axisTick:{show:false},
         axisLabel:{
             textStyle:{
                 color: '#fff',
@@ -578,6 +589,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
             },
           },
           axisLine:{
+            show:false,
             lineStyle:{
                 color: '#fff'
             }
@@ -591,6 +603,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
         //     fontSize : '16'
         // },
         gridIndex: 3,
+        axisTick:{show:false},
         axisLabel:{
             textStyle:{
                 color: '#fff',
@@ -598,6 +611,7 @@ color:['#489eea','#d63c55','#a756e9','#7aab42'],
             },
           },
           axisLine:{
+            show:false,
             lineStyle:{
                 color: '#fff'
             }

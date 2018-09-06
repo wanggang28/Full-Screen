@@ -19,8 +19,8 @@ const columns = [{
   key: 'release',
 }, {
   title: 'Next_Milestone',
-  dataIndex: 'nextmilestone',
-  key: 'nextmilestone',
+  dataIndex: 'nextMilestone',
+  key: 'nextMilestone',
 }, {
   title: 'Details',
   key: 'details',
@@ -30,32 +30,34 @@ const columns = [{
 const pagination={
   hideOnSinglePage:true
 }
-const data = [{
-  key: '1',
-  release: '',
-  nextmilestone: '',
-  details: '',
-}, {
-  key: '2',
-  release: '',
-  nextmilestone: '',
-  details: '',
-}, {
-  key: '3',
-  release: '',
-  nextmilestone: '',
-  details: '',
-},{
-  key: '4',
-  release: '',
-  nextmilestone: '',
-  details: '',
-},{
-  key: '5',
-  release: '',
-  nextmilestone: '',
-  details: '',
-}];
+const data = [
+// {
+//   key: '1',
+//   release: '',
+//   nextmilestone: '',
+//   details: '',
+// }, {
+//   key: '2',
+//   release: '',
+//   nextmilestone: '',
+//   details: '',
+// }, {
+//   key: '3',
+//   release: '',
+//   nextmilestone: '',
+//   details: '',
+// },{
+//   key: '4',
+//   release: '',
+//   nextmilestone: '',
+//   details: '',
+// },{
+//   key: '5',
+//   release: '',
+//   nextmilestone: '',
+//   details: '',
+// }
+];
 
 class App extends Component {
   constructor(props) {
@@ -110,11 +112,16 @@ class App extends Component {
           this.state.mapData.yAxis[2].data=result.Taiwan.xAxis;
           this.state.mapData.yAxis[3].data=result.USA.xAxis;
           this.state.mapData.legend.data=result.Beijing.legend;
+          
         for(var i=0;i<result.table.data.length;i++){
-            data[i].release=result.table.data[i].release;
-            data[i].nextmilestone=result.table.data[i].nextMilestone;
-            data[i].details=result.table.data[i].details;
+            result.table.data[i]['key']=i;
+            data.push(result.table.data[i]);
+            // data[i].nextmilestone=result.table.data[i].nextMilestone;
+            // data[i].details=result.table.data[i].details;
         }
+        console.log(result.table.data)
+        console.log(data)
+       
         for(var i=0;i<result.Beijing.series.length;i++){
             result.Beijing.series[i]['xAxisIndex']=0;
             result.Beijing.series[i]['yAxisIndex']=0;
