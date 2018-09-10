@@ -270,7 +270,7 @@ var series = [];
 
  
 export const mapOption = {
-    color:['#489eea','#7aab42','#a756e9','#d63c55'],
+    color:['#489eea','#7aab42','#d63c55','#a756e9'],
     backgroundColor: '#1f1d1d',
     textStyle: {
         color: '#fff'
