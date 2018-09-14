@@ -13,6 +13,7 @@ const MapReact = asyncComponent(() => import(/* webpackChunkName: "MapReact" */'
 const RadarReact = asyncComponent(() => import(/* webpackChunkName: "RadarReact" */'./EchartsDemo/RadarReact')) //雷达图组件
 const CandlestickReact = asyncComponent(() => import(/* webpackChunkName: "CandlestickReact" */'./EchartsDemo/CandlestickReact'))
 const LiquidfillReact = asyncComponent(() => import(/* webpackChunkName: "CandlestickReact" */'./EchartsDemo/LiquidfillReact')) //k线图组件
+const defineArr = [{name: 'xcc',},{name: 'uefi'}];
 class App extends Component {
   constructor(props) {
       super(props);
@@ -27,9 +28,9 @@ class App extends Component {
         uefi_action_breakdown:pieActionOption,
         width: props.width,
         height: props.height,
-        time:new Date()
+        time:new Date(),
         //XCCPie:pieOption2,
-        //select:defineArr[0].name
+        selectName: defineArr[0].name,
       };
       setInterval(function(){
  
@@ -40,14 +41,29 @@ class App extends Component {
 	        });
  
 	  }.bind(this),1000);
-      this.getCore_Phase();
+      this.getCore_Phase(defineArr[0].name);
       //this.getDefect_Phase();
-      this.getuefi_action_breakdown();
-      this.getuefi_summary();
-      this.getuefi_phase();
+      this.getuefi_action_breakdown(defineArr[0].name);
+      this.getuefi_summary(defineArr[0].name);
+      this.getuefi_phase(defineArr[0].name);
       //this.getXCCPie('18D Block');
   }
 
+
+  changeName(e) {
+    this.setState({ selectName: e.target.value });
+    console.log(e.target.value )
+    this.getCore_Phase(e.target.value);
+    this.getuefi_action_breakdown(e.target.value);
+    this.getuefi_summary(e.target.value);
+    this.getuefi_phase(e.target.value);
+    // defineArr.map((item, index) => {
+    //   if(e.target.value === item.name) {
+    //     this.setState({ selectThing: item.things[0] });
+    //   }
+    //   return true;
+    // })
+  };
 
   componentDidMount() {
     this.updateSize();
@@ -69,39 +85,40 @@ class App extends Component {
     }
   }
   //'http://fw.core.lenovo.com/dv/table/grid?name=core&q=18D%20UEFI'
-  getCore_Phase() {
+  getCore_Phase(release) {
     $.get('http://fw.core.lenovo.com/dv/chart/fupan', function (result) {
         //Core FW Summary
+        console.log(result[release])
         var xAxis=result.xAxis;
         this.state.Core_FW.xAxis.data = xAxis;
-        this.state.Core_FW.legend.data = result.xcc.charts[0].legend;
-        for(var i=0;i<result.xcc.charts[0].legend.length;i++){
-            this.state.Core_FW.series[i].data = result.xcc.charts[0].series[i].data;
-            this.state.Core_FW.series[i].name = result.xcc.charts[0].series[i].name;
+        this.state.Core_FW.legend.data = result[release].charts[0].legend;
+        for(var i=0;i<result[release].charts[0].legend.length;i++){
+            this.state.Core_FW.series[i].data = result[release].charts[0].series[i].data;
+            this.state.Core_FW.series[i].name = result[release].charts[0].series[i].name;
         }
         //Defect Phase
         this.state.Defect_Phase.xAxis.data = xAxis;
-        this.state.Defect_Phase.legend.data = result.xcc.charts[1].legend;
-        for(var i=0;i<result.xcc.charts[1].legend.length;i++){
-            this.state.Defect_Phase.series[i].data = result.xcc.charts[1].series[i].data;
-            this.state.Defect_Phase.series[i].name = result.xcc.charts[1].series[i].name;
+        this.state.Defect_Phase.legend.data = result[release].charts[1].legend;
+        for(var i=0;i<result[release].charts[1].legend.length;i++){
+            this.state.Defect_Phase.series[i].data = result[release].charts[1].series[i].data;
+            this.state.Defect_Phase.series[i].name = result[release].charts[1].series[i].name;
         }
         //Code_Defect
         var xAxis=result.xAxis;
         this.state.Code_defect.xAxis.data = xAxis;
-        this.state.Code_defect.legend.data = result.xcc.charts[2].legend;
+        this.state.Code_defect.legend.data = result[release].charts[2].legend;
         
-        for(var i=0;i<result.xcc.charts[2].legend.length;i++){
-            this.state.Code_defect.series[i].data = result.xcc.charts[2].series[i].data;
-            console.log(typeof result.xcc.charts[2].series[i].data[0])
-            this.state.Code_defect.series[i].name = result.xcc.charts[2].series[i].name;
+        for(var i=0;i<result[release].charts[2].legend.length;i++){
+            this.state.Code_defect.series[i].data = result[release].charts[2].series[i].data;
+            console.log(result[release].charts[2].series[i].data[0])
+            this.state.Code_defect.series[i].name = result[release].charts[2].series[i].name;
         }
         //Others
         this.state.Other_defect.xAxis.data = xAxis;
-        this.state.Other_defect.legend.data = result.xcc.charts[3].legend;
-        for(var i=0;i<result.xcc.charts[3].legend.length;i++){
-            this.state.Other_defect.series[i].data = result.xcc.charts[3].series[i].data;
-            this.state.Other_defect.series[i].name = result.xcc.charts[3].series[i].name;
+        this.state.Other_defect.legend.data = result[release].charts[3].legend;
+        for(var i=0;i<result[release].charts[3].legend.length;i++){
+            this.state.Other_defect.series[i].data = result[release].charts[3].series[i].data;
+            this.state.Other_defect.series[i].name = result[release].charts[3].series[i].name;
         }
         this.setState(this.state); 
       }.bind(this));
@@ -122,11 +139,11 @@ class App extends Component {
 //   }
   
   //'http://fw.core.lenovo.com/dv/table/grid?name=xcc_core_summary_01&q=18D%20Total'
-  getuefi_action_breakdown() {
+  getuefi_action_breakdown(release) {
     // if(x==undefined){
     //   x='18D Block';
     // }
-    var serverRequest = $.get('http://fw.core.lenovo.com/dv/table/grid?name=xcc_action_breakdown&q=18D%20Total', function (result) {
+    var serverRequest = $.get('http://fw.core.lenovo.com/dv/table/grid?name='+release+'_action_breakdown&q=18D%20Total', function (result) {
         var data = result.chart.data;
         this.state.uefi_action_breakdown.series[0].data = data;
         var per=Number(result.table.data[2]['%'])/100;
@@ -137,11 +154,11 @@ class App extends Component {
       }.bind(this));
   }
   
-  getuefi_summary() {
+  getuefi_summary(release) {
     // if(x==undefined){
     //   x='18D Block';
     // }
-    var serverRequest = $.get('http://fw.core.lenovo.com/dv/table/grid?name=xcc_summary&q=18D%20Total', function (result) {
+    var serverRequest = $.get('http://fw.core.lenovo.com/dv/table/grid?name='+release+'_summary&q=18D%20Total', function (result) {
         var value = result.chart.series.total;      
         var name=result.chart.xAxis;
         this.state.uefi_summary.yAxis.data = name;
@@ -151,56 +168,30 @@ class App extends Component {
   }
 
   //'http://fw.core.lenovo.com/dv/table/grid?name=xcc_core_summary_02&q=18D%20Total'
-  getuefi_phase() {
+  getuefi_phase(release) {
     // if(x==undefined){
     //   x='18D Block';
     // }
-    var serverRequest = $.get('http://fw.core.lenovo.com/dv/table/grid?name=xcc_core_defect&q=18D%20Total', function (result) {
+    var serverRequest = $.get('http://fw.core.lenovo.com/dv/table/grid?name='+release+'_core_defect&q=18D%20Total', function (result) {
         var data = result.chart.data;
         this.state.uefi_phase.series[0].data = data;
         this.setState(this.state); 
       }.bind(this));
   }
-  
-//   getXCCPie(x) {
-//     // if(x==undefined){
-//     //   x='18D Block';
-//     // }
-//     var serverRequest = $.get(API[x][5].api, function (result) {
-//         var data = result.chart.data;
-//         this.state.XCCPie.series[0].data = data;
-//         this.setState(this.state); 
-//       }.bind(this));
 
-//   }
-  
-//   changeName(e){
-//     this.setState({ selectName: e.target.value });
-//     // defineArr.map((item, index) => {
-//           // for(var i=0;i<API[item.name].length;i++){
-//     this.getUEFIData(e.target.value)
-//     this.getXCCData(e.target.value)
-//     this.getXCCCore(e.target.value)
-//     this.getUEFICore(e.target.value)
-//     this.getUEFIPie(e.target.value)
-//     this.getXCCPie(e.target.value)
-//       return true;
-//     // })
-    
-//   }
 
   render() {
-    // const names = defineArr.map((item, index) => {
-    //   return <option key={index}>{item.name}</option>
-    // });
+     const names = defineArr.map((item, index) => {
+      return <option key={index}>{item.name}</option>
+    });
     return (
-
+        
             <div className="Full-screen" style={{width: this.state.width, height: this.state.height,backgroundImage:'url(' + earth + ')'}}>
                 <div className="banner">
                     <div className="layout">
                         <div className="title">
-                            <div className="datetime" id="datetime">
-                                <div className="time1">18D Core fw Fupan – Defects Analysis</div>
+                            <div className="datetime" id="datetime">    
+                                <div className="time1">18D {this.state.selectName} Core fw Fupan – Defects Analysis<span className="option"><select value={this.state.selectName} onChange={this.changeName.bind(this)}>{names}</select></span></div>
                                 <div className="time2">{this.state.time.toLocaleDateString().replace(/\//g,".")} {this.state.time.toLocaleTimeString('chinese',{hour12:false})}</div>
                             </div>
                         </div>

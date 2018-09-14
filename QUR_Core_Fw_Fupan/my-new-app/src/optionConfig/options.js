@@ -7,7 +7,7 @@ import echarts from 'echarts/lib/echarts'
 //饼图数据
 export const piePhaseOption = {
     title:{
-        text:'XCC Core Defect by Phase',
+        text:'Core Defect by Phase',
         left:10,
         top:6,
         textStyle:{
@@ -80,7 +80,7 @@ export const piePhaseOption = {
 };
 export const pieActionOption = {
     title:{
-        text:'XCC Action Breakdown',
+        text:'Action Breakdown',
         left:1,
         top:0,
         textStyle:{
@@ -262,7 +262,7 @@ export const verticalbarOption2={
 export const barSummaryOption = {
   color:['#1ff0c8'],  
   title:{
-        text:'XCC Summary',
+        text:'Defect Summary',
         left:10,
         top:6,
         textStyle:{
@@ -588,7 +588,7 @@ export const scatterOption = {
 //total 图
 export const stacklineOption={
     title:{
-        text:'XCC Summary Trend',
+        text:'Defect Summary Trend',
         left:10,
         top:6,
         textStyle:{
@@ -747,7 +747,7 @@ export const stacklineOption={
 export const much_stackOption={
     color:['#7ad0e8','#b2dd1c','#eb5141','#f3c21c','#2caf9b'],
     title:{
-        text:'XCC Transfer Out Trend',
+        text:'Transfer Out Trend',
         left:10,
         top:6,
         textStyle:{
@@ -759,7 +759,7 @@ export const much_stackOption={
         trigger: 'axis'
     },
     legend: {
-        top:10,
+        top:25,
         right:50,
         textStyle:{
                 color:'#fff'
@@ -860,7 +860,7 @@ export const much_stackOption={
 export const stackOption = {
   color:['#de3c6c','#6739be'],  
   title:{
-        text:'XCC Action Breakdown Trend',
+        text:'Code Fixes and Non-Code Issue Trend',
         left:10,
         top:6,
         textStyle:{
@@ -875,7 +875,7 @@ export const stackOption = {
         }
     },
     legend: {
-        top:10,
+        top:25,
         right:50,
         textStyle:{
                 color:'#fff'
@@ -890,8 +890,10 @@ export const stackOption = {
     },
     yAxis: {
         type: 'value',
-        // max:100,
-        // min:0,
+        max:100,
+        min:0,
+        name:'单位(%)',
+        nameGap:7,
         axisLabel:{
             textStyle:{
                 color: '#fff'
@@ -952,7 +954,7 @@ export const stackOption = {
 export const muchlineOption={
     color:['#7ad0e8','#b2dd1c','#eb5141','#f3c21c','#2caf9b'],
     title:{
-        text:'XCC Core Defect Trend by Phase',
+        text:'Core Defect Trend by Phase',
         left:10,
         top:6,
         textStyle:{
@@ -1025,7 +1027,7 @@ export const muchlineOption={
                 normal: {
                   show:true,
                   color:'#fff',
-                  position: 'inside',
+                  position: 'top',
                 }
             },
             data:[]
@@ -1037,7 +1039,7 @@ export const muchlineOption={
                 normal: {
                   show:true,
                   color:'#fff',
-                  position: 'inside',
+                  position: 'top',
                 }
             },
             data:[]
@@ -1049,7 +1051,7 @@ export const muchlineOption={
                 normal: {
                   show:true,
                   color:'#fff',
-                  position: 'inside',
+                  position: 'top',
                 }
             },
             data:[]
@@ -1061,7 +1063,7 @@ export const muchlineOption={
                 normal: {
                   show:true,
                   color:'#fff',
-                  position: 'inside',
+                  position: 'top',
                 }
             },
             data:[]
@@ -1073,7 +1075,7 @@ export const muchlineOption={
                 normal: {
                   show:true,
                   color:'#fff',
-                  position: 'inside',
+                  position: 'top',
                 }
             },
             data:[]
