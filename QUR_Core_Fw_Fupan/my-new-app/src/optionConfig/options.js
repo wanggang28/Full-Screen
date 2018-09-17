@@ -1287,7 +1287,7 @@ export const shuiqiuOption = {
     },
     series: [{
         type: 'liquidFill',
-        data: [], 
+        data: [0], 
         radius: '70%',
         center: ['50%', '60%'],
         label:{

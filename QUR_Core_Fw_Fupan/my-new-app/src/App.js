@@ -148,8 +148,8 @@ class App extends Component {
         this.state.uefi_action_breakdown.series[0].data = data;
         var per=Number(result.table.data[2]['%'])/100;
         console.log(per)
-        this.state.Non_CodeIssue.series[0].data.push(per);
-        console.log(this.state.Non_CodeIssue.series[0].data)
+        this.state.Non_CodeIssue.series[0].data[0]=per;
+        console.log(this.state.Non_CodeIssue.series[0].data[0])
         this.setState(this.state); 
       }.bind(this));
   }
@@ -216,7 +216,7 @@ class App extends Component {
                              <div className="stack">
                                   <div className="stack-right"><BarReact option={this.state.Other_defect} /></div>
                                   <div className="stack-left">
-                                             <div className="actions"><LiquidfillReact option={shuiqiuOption}/></div>
+                                             <div className="actions"><LiquidfillReact option={this.state.Non_CodeIssue}/></div>
                                              <div className="actions"><PieReact option={this.state.uefi_action_breakdown}/></div>
                                   </div>
                              </div>  
