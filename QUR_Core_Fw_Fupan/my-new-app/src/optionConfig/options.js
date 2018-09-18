@@ -97,11 +97,11 @@ export const pieActionOption = {
     legend: {
         orient: 'vertical',
         left: 'left',
-        data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+        data: []
     },
     series : [
         {
-            name: '访问来源',
+            name: '',
             type: 'pie',
             radius : '70%',
             center: ['50%', '63%'],
@@ -326,7 +326,7 @@ export const barSummaryOption = {
             label: {
                 normal: {
                     show: true,
-                    position: 'right',
+                    position: 'inside',
                     color:'#fff'
                 }
             },
@@ -804,6 +804,9 @@ export const much_stackOption={
              color:'#fff'
           }
         },
+        splitLine:{
+		    show:false
+        },
         axisLine:{
           lineStyle:{
              color:'#fff'
@@ -858,7 +861,7 @@ export const much_stackOption={
 //defect_code 图
 
 export const stackOption = {
-  color:['#de3c6c','#6739be'],  
+  color:['#de3c6c','#6739be','#f3c21c','#2caf9b'],  
   title:{
         text:'Code Fixes and Non-Code Issue Trend',
         left:10,
@@ -876,7 +879,7 @@ export const stackOption = {
     },
     legend: {
         top:25,
-        right:50,
+        left:0,
         textStyle:{
                 color:'#fff'
             },
@@ -888,24 +891,41 @@ export const stackOption = {
         bottom:'3%',
         containLabel: true
     },
-    yAxis: {
+    yAxis: [{
         type: 'value',
         max:100,
         min:0,
-        name:'单位(%)',
-        nameGap:7,
+        // name:'单位(%)',
+        // nameGap:7,
         axisLabel:{
             textStyle:{
                 color: '#fff'
             },
-            formatter: '{value}'
+            formatter: '{value}%'
         },
+        splitLine:{show:false},
         axisLine:{
             lineStyle:{
                 color: '#fff'
             }
         },
     },
+    {
+        type: 'value',
+        axisLabel:{
+            textStyle:{
+                color: '#fff'
+            },
+            formatter: '{value}'
+        },
+        splitLine:{show:false},
+        axisLine:{
+            lineStyle:{
+                color: '#fff'
+            }
+        },
+    }
+],
     xAxis: {
         type: 'category',
         axisLabel:{
@@ -913,6 +933,7 @@ export const stackOption = {
                 color: '#fff'
             }
         },
+        splitLine:{show:false},
         boundaryGap:true,
         axisLine:{
             lineStyle:{
@@ -928,7 +949,7 @@ export const stackOption = {
             stack: '总量',
             label: {
                 normal: {
-                  show:true,
+                  show:false,
                   position: 'inside',
                 }
             },
@@ -940,8 +961,32 @@ export const stackOption = {
             stack: '总量',
             label: {
                 normal: {
-                  show:true,
+                  show:false,
                   position: 'inside',
+                }
+            },
+            data:[]
+        },
+        {
+            name:'',
+            type:'line',
+            yAxisIndex:1,
+            label: {
+                normal: {
+                  show:true,
+                  position: 'top',
+                }
+            },
+            data:[]
+        },
+        {
+            name:'',
+            type:'line',
+            yAxisIndex:1,
+            label: {
+                normal: {
+                  show:true,
+                  position: 'top',
                 }
             },
             data:[]
@@ -1297,6 +1342,79 @@ export const shuiqiuOption = {
     }]
 };
 
+
+export const LiquidfillOption = {
+    title:{
+        text:'Transfer Out Total Rate',
+        left:1,
+        top:1,
+        textStyle:{
+            fontSize:13,
+            color:'#fff',
+            fontFamily:'serif'
+        }
+    },
+    series: [{
+        type: 'liquidFill',
+        data: [0], 
+        radius: '70%',
+        center: ['50%', '60%'],
+        label:{
+            position: ['50%', '60%'],
+            fontSize:12
+        }
+    }]
+};
+
+
+export const transferoutOption={
+    title:{
+        text:'Transfer Out',
+        left:1,
+        top:0,
+        textStyle:{
+            fontSize:13,
+            color:'#fff',
+            fontFamily:'serif'
+        }
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    color:['#7ad0e8','#b2dd1c','#eb5141','#f3c21c','#2caf9b'],
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: []
+    },
+    series : [
+        {
+            name: '',
+            type: 'pie',
+            radius : '70%',
+            center: ['50%', '63%'],
+            data:[],
+            labelLine: {
+                normal: {
+                    lineStyle: {
+                        color: '#fff'
+                    },
+                    smooth: 0.2,
+                    length: 2,
+                    length2:5,
+                }
+            },
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+}
 
 
 

@@ -4,7 +4,7 @@ import asyncComponent from './AsyncComponent'
 import $ from 'jquery'
 import earth from './images/green_black.jpg'
 import border from './images/border.png'
-import { pieActionOption,shuiqiuOption,billOption,funnelOption,muchlineOption,stacklineOption,actionOption,much_stackOption,stackOption,OthersOption,piePhaseOption,pieOption2, verticalbarOption1,verticalbarOption2,barSummaryOption,horizontalbarOption2,lineOption, scatterOption, mapOption, radarOption, candlestickOption } from './optionConfig/options'
+import { transferoutOption,LiquidfillOption,pieActionOption,shuiqiuOption,billOption,funnelOption,muchlineOption,stacklineOption,actionOption,much_stackOption,stackOption,OthersOption,piePhaseOption,pieOption2, verticalbarOption1,verticalbarOption2,barSummaryOption,horizontalbarOption2,lineOption, scatterOption, mapOption, radarOption, candlestickOption } from './optionConfig/options'
 const PieReact = asyncComponent(() => import(/* webpackChunkName: "PieReact" */'./EchartsDemo/PieReact'))  //饼图组件
 const BarReact = asyncComponent(() => import(/* webpackChunkName: "BarReact" */'./EchartsDemo/BarReact')) //柱状图组件
 const LineReact = asyncComponent(() => import(/* webpackChunkName: "LineReact" */'./EchartsDemo/LineReact'))  //折线图组件
@@ -26,6 +26,8 @@ class App extends Component {
         uefi_summary: barSummaryOption,
         uefi_phase:piePhaseOption,
         uefi_action_breakdown:pieActionOption,
+        transferout_total:LiquidfillOption,
+        transferout_pie:transferoutOption,
         width: props.width,
         height: props.height,
         time:new Date(),
@@ -46,6 +48,7 @@ class App extends Component {
       this.getuefi_action_breakdown(defineArr[0].name);
       this.getuefi_summary(defineArr[0].name);
       this.getuefi_phase(defineArr[0].name);
+      this.gettransferout(defineArr[0].name);
       //this.getXCCPie('18D Block');
   }
 
@@ -179,6 +182,16 @@ class App extends Component {
       }.bind(this));
   }
 
+  gettransferout(release){
+    var serverRequest = $.get('http://fw.core.lenovo.com/dv/table/grid?name='+release+'_transferout&q=18D%20Total', function (result) {
+        var data = result.chart;
+        console.log(result.chart)
+        this.state.transferout_pie.series[0].data = data;
+        var per=Number(result.rate)/100;
+        this.state.transferout_total.series[0].data[0]=per;
+        this.setState(this.state);  
+      }.bind(this));
+  }
 
   render() {
      const names = defineArr.map((item, index) => {
@@ -191,7 +204,7 @@ class App extends Component {
                     <div className="layout">
                         <div className="title">
                             <div className="datetime" id="datetime">    
-                                <div className="time1">18D {this.state.selectName} Core fw Fupan – Defects Analysis<span className="option"><select value={this.state.selectName} onChange={this.changeName.bind(this)}>{names}</select></span></div>
+                                <div className="time1">18D {this.state.selectName.toLocaleUpperCase()} Core Fw Fupan<span className="option"><select value={this.state.selectName} onChange={this.changeName.bind(this)}>{names}</select></span></div>
                                 <div className="time2">{this.state.time.toLocaleDateString().replace(/\//g,".")} {this.state.time.toLocaleTimeString('chinese',{hour12:false})}</div>
                             </div>
                         </div>
@@ -216,8 +229,8 @@ class App extends Component {
                              <div className="stack">
                                   <div className="stack-right"><BarReact option={this.state.Other_defect} /></div>
                                   <div className="stack-left">
-                                             <div className="actions"><LiquidfillReact option={this.state.Non_CodeIssue}/></div>
-                                             <div className="actions"><PieReact option={this.state.uefi_action_breakdown}/></div>
+                                             <div className="actions"><LiquidfillReact option={this.state.transferout_total}/></div>
+                                             <div className="actions"><PieReact option={this.state.transferout_pie}/></div>
                                   </div>
                              </div>  
                         </div>
