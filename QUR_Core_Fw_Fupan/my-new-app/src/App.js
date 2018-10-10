@@ -204,8 +204,12 @@ class App extends Component {
                     <div className="layout">
                         <div className="title">
                             <div className="datetime" id="datetime">    
-                                <div className="time1">18D {this.state.selectName.toLocaleUpperCase()} Core Fw Fupan<span className="option"><select value={this.state.selectName} onChange={this.changeName.bind(this)}>{names}</select></span></div>
-                                <div className="time2">{this.state.time.toLocaleDateString().replace(/\//g,".")} {this.state.time.toLocaleTimeString('chinese',{hour12:false})}</div>
+                                <div className="option"><select value={this.state.selectName} onChange={this.changeName.bind(this)}>{names}</select></div>
+                                <div className="title-Block">18D {this.state.selectName.toLocaleUpperCase()} Core Fw Fupan</div>
+                                <div className="time-average">
+                                <span className="average">Defect Average:<span className="defect-average">500</span></span>
+                                <span className="time">{this.state.time.toLocaleDateString().replace(/\//g,".")} {this.state.time.toLocaleTimeString('chinese',{hour12:false})}</span>
+                                </div>
                             </div>
                         </div>
                         <div className="mockup">

@@ -106,7 +106,7 @@ class App extends Component {
   // }
   
   getmapData(){
-      $.get('http://fw.core.lenovo.com/dv/chart/overall?name=release_owr&name=site_manager_owr&q=18D%20Total&q=MLK%20Total&q=A2%20Total&q=Mehlow%20Total&q=A2_MLK_Total ',function(result){
+      $.get('http://bugzilla.bigcorn.cn/public/jsonfiles/worldmap.json',function(result){
           this.state.mapData.yAxis[0].data=result.Beijing.xAxis;
           this.state.mapData.yAxis[1].data=result.Shanghai.xAxis;
           this.state.mapData.yAxis[2].data=result.Taiwan.xAxis;

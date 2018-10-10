@@ -103,8 +103,8 @@ export const pieActionOption = {
         {
             name: '',
             type: 'pie',
-            radius : '70%',
-            center: ['50%', '63%'],
+            radius : '75%',
+            center: ['50%', '61%'],
             data:[],
             labelLine: {
                 normal: {
@@ -767,7 +767,8 @@ export const much_stackOption={
         data:['Bad Fix','LimCAN','Transfer Out']
     },
     grid: {
-        left: '3%',
+        left: '2%',
+        right:'2%',
         top:'20%',
         bottom:'3%',
         containLabel: true
@@ -880,13 +881,16 @@ export const stackOption = {
     legend: {
         top:25,
         left:0,
+        right:0,
         textStyle:{
-                color:'#fff'
+                color:'#fff',
+                fontSize:10,
             },
         data: ''
     },
     grid: {
-        left: '3%',
+        left: '2%',
+        right:'2%',
         top:'20%',
         bottom:'3%',
         containLabel: true
@@ -1321,7 +1325,7 @@ export const funnelOption={
 
 export const shuiqiuOption = {
     title:{
-        text:'Non-Code Issue',
+        text:'Non-Code Issue Rate',
         left:1,
         top:1,
         textStyle:{
@@ -1333,8 +1337,8 @@ export const shuiqiuOption = {
     series: [{
         type: 'liquidFill',
         data: [0], 
-        radius: '70%',
-        center: ['50%', '60%'],
+        radius: '75%',
+        center: ['50%', '58%'],
         label:{
             position: ['50%', '60%'],
             fontSize:12
@@ -1357,8 +1361,8 @@ export const LiquidfillOption = {
     series: [{
         type: 'liquidFill',
         data: [0], 
-        radius: '70%',
-        center: ['50%', '60%'],
+        radius: '75%',
+        center: ['50%', '58%'],
         label:{
             position: ['50%', '60%'],
             fontSize:12
@@ -1392,8 +1396,8 @@ export const transferoutOption={
         {
             name: '',
             type: 'pie',
-            radius : '70%',
-            center: ['50%', '63%'],
+            radius : '75%',
+            center: ['50%', '61%'],
             data:[],
             labelLine: {
                 normal: {
