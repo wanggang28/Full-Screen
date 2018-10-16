@@ -428,7 +428,7 @@
             justify-content: space-around;
         }
         .option{
-            width: 25%;
+            width: 20%;
             height: 100%;
             text-align: left;
             display: flex;
@@ -437,12 +437,13 @@
         .title-Block{
             font-size: 33px;
             color: #B6B6B6;
-            width: 50%;
-            text-align: center;
-            padding-top: 10px;
+            width: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .average{
-            font-size: 20px;
+            font-size: 25px;
             color: #B6B6B6;
         }
         .defect-average{
@@ -450,7 +451,7 @@
         }
         .time-average{
             font-size: 20px;
-            width: 25%;
+            width: 20%;
             color: #B6B6B6;
             text-align: right;
             display: -ms-flexbox;

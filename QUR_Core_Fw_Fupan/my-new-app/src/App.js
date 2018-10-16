@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import asyncComponent from './AsyncComponent'
 import $ from 'jquery'
 import earth from './images/green_black.jpg'
-import border from './images/border.png'
+import avgimg from './images/add.png'
 import { transferoutOption,LiquidfillOption,pieActionOption,shuiqiuOption,billOption,funnelOption,muchlineOption,stacklineOption,actionOption,much_stackOption,stackOption,OthersOption,piePhaseOption,pieOption2, verticalbarOption1,verticalbarOption2,barSummaryOption,horizontalbarOption2,lineOption, scatterOption, mapOption, radarOption, candlestickOption } from './optionConfig/options'
 const PieReact = asyncComponent(() => import(/* webpackChunkName: "PieReact" */'./EchartsDemo/PieReact'))  //饼图组件
 const BarReact = asyncComponent(() => import(/* webpackChunkName: "BarReact" */'./EchartsDemo/BarReact')) //柱状图组件
@@ -33,6 +33,7 @@ class App extends Component {
         time:new Date(),
         //XCCPie:pieOption2,
         selectName: defineArr[0].name,
+        avgAge:''
       };
       setInterval(function(){
  
@@ -49,17 +50,17 @@ class App extends Component {
       this.getuefi_summary(defineArr[0].name);
       this.getuefi_phase(defineArr[0].name);
       this.gettransferout(defineArr[0].name);
-      //this.getXCCPie('18D Block');
+      this.getavgAge(defineArr[0].name);
   }
 
 
   changeName(e) {
     this.setState({ selectName: e.target.value });
-    console.log(e.target.value )
     this.getCore_Phase(e.target.value);
     this.getuefi_action_breakdown(e.target.value);
     this.getuefi_summary(e.target.value);
     this.getuefi_phase(e.target.value);
+    this.getavgAge(e.target.value);
     // defineArr.map((item, index) => {
     //   if(e.target.value === item.name) {
     //     this.setState({ selectThing: item.things[0] });
@@ -193,6 +194,16 @@ class App extends Component {
       }.bind(this));
   }
 
+  getavgAge(release){
+      console.log(release)
+    var serverRequest = $.get('http://fw.core.lenovo.com/dv/table/grid?name=fupan_'+release+'_avgage&q=18D%20Total', function (result) {
+        var data = result.avgAge;
+        console.log(data)
+        this.state.avgAge=data;
+        this.setState(this.state);  
+      }.bind(this));
+  }
+
   render() {
      const names = defineArr.map((item, index) => {
       return <option key={index}>{item.name}</option>
@@ -207,7 +218,7 @@ class App extends Component {
                                 <div className="option"><select value={this.state.selectName} onChange={this.changeName.bind(this)}>{names}</select></div>
                                 <div className="title-Block">18D {this.state.selectName.toLocaleUpperCase()} Core Fw Fupan</div>
                                 <div className="time-average">
-                                <span className="average">Defect Average:<span className="defect-average">500</span></span>
+                                <span className="average"><img src={avgimg} alt="" width="30px" height="25px"/><span className="defect-average">{this.state.avgAge}</span></span>
                                 <span className="time">{this.state.time.toLocaleDateString().replace(/\//g,".")} {this.state.time.toLocaleTimeString('chinese',{hour12:false})}</span>
                                 </div>
                             </div>
