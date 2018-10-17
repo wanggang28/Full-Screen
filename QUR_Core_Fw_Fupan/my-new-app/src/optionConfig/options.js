@@ -759,7 +759,7 @@ export const much_stackOption={
         trigger: 'axis'
     },
     legend: {
-        top:25,
+        top:27,
         right:50,
         textStyle:{
                 color:'#fff'
@@ -769,7 +769,7 @@ export const much_stackOption={
     grid: {
         left: '2%',
         right:'2%',
-        top:'20%',
+        top:'23%',
         bottom:'3%',
         containLabel: true
     },
@@ -879,9 +879,10 @@ export const stackOption = {
         }
     },
     legend: {
-        top:25,
-        left:0,
+        top:27,
+        // left:0,
         right:0,
+        itemGap:0,
         textStyle:{
                 color:'#fff',
                 fontSize:10,
@@ -891,7 +892,7 @@ export const stackOption = {
     grid: {
         left: '2%',
         right:'2%',
-        top:'20%',
+        top:'23%',
         bottom:'3%',
         containLabel: true
     },
