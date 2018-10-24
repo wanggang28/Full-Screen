@@ -409,14 +409,17 @@ export const horizontalbarOption2 = {
 };
 
 
-//折线图数据
+//平均defect数量
 export const lineOption = {
   color:['#69c0ff'],
-  title: {
-    text: 'Transfer Out -- UEFI',
-    textStyle:{
-        color:'#fff'
-    }
+  title:{
+        text:'AvgAge Trend',
+        left:10,
+        top:6,
+        textStyle:{
+            color:'#fff',
+            fontFamily:'serif'
+        }
   },
   tooltip : {
     trigger: 'axis',
@@ -442,39 +445,40 @@ export const lineOption = {
     top:'20%',
     containLabel: true
   },
-  xAxis : [
-    {
-      type : 'category',
-      axisLabel:{
-            textStyle:{
-                color: '#fff'
-            }
+  xAxis: {
+        type: 'category',
+        boundaryGap: true,
+        splitLine:{
+		    show:false
+        },
+        axisLabel:{
+          
+          textStyle:{
+             color:'#fff',
+             
+          }
         },
         axisLine:{
-            show:false,
-            lineStyle:{
-                color: '#fff'
-            }
+          lineStyle:{
+             color:'#fff'
+          }
         },
-      data : ['LXCA','XCC Platform','UEFI','Tools']
-    }
-  ],
-  yAxis : [
-    {
-      type : 'value',
-      axisLabel:{
-            textStyle:{
-                color: '#fff'
-            }
+        data: ['17B','18A','18B','18D']
+    },
+    yAxis: {
+        type: 'value',
+        axisLabel:{
+          textStyle:{
+             color:'#fff'
+          }
         },
+        splitLine:{show:false},
         axisLine:{
-            show:false,
-            lineStyle:{
-                color: '#fff'
-            }
+          lineStyle:{
+             color:'#fff'
+          }
         },
-    }
-  ],
+    },
   series : [
     {
       name:'',
@@ -487,8 +491,8 @@ export const lineOption = {
                   position: 'top',
                 }
             },
-      areaStyle: {normal: {}},
-      data:[120, 132, 101, 134]
+      //areaStyle: {normal: {}},
+      data:[20, 32, 10, 34]
     },
     
   ]

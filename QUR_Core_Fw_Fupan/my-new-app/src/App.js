@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import asyncComponent from './AsyncComponent'
 import $ from 'jquery'
-import earth from './images/green_black.jpg'
+import earth from './images/background.png'
 import avgimg from './images/add.png'
 import { transferoutOption,LiquidfillOption,pieActionOption,shuiqiuOption,billOption,funnelOption,muchlineOption,stacklineOption,actionOption,much_stackOption,stackOption,OthersOption,piePhaseOption,pieOption2, verticalbarOption1,verticalbarOption2,barSummaryOption,horizontalbarOption2,lineOption, scatterOption, mapOption, radarOption, candlestickOption } from './optionConfig/options'
 const PieReact = asyncComponent(() => import(/* webpackChunkName: "PieReact" */'./EchartsDemo/PieReact'))  //饼图组件
@@ -224,13 +224,16 @@ class App extends Component {
                             </div>
                         </div>
                         <div className="mockup">
-                            <div className="content">
+                            <div className="Summary">
                                 <div className="content-left"><BarReact option={this.state.uefi_summary} /></div>
                                 <div className="content-right"><LineReact option={this.state.Core_FW}/></div>
                             </div>
-                            <div className="content">
-                                <div className="content-right"><LineReact option={this.state.Defect_Phase}/></div>
-                                <div className="content-left"><PieReact option={this.state.uefi_phase} /></div>
+                            <div className="Core">
+                                <div className="core-defect">
+                                    <div className="content-right"><LineReact option={this.state.Defect_Phase}/></div>
+                                    <div className="content-left"><PieReact option={this.state.uefi_phase} /></div>
+                                </div>
+                                <div className="avg"><LineReact option={lineOption}/></div>
                             </div>
                         </div>
                         <div className="mockdown">
