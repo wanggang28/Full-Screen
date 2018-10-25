@@ -479,7 +479,7 @@ export const lineOption = {
           }
         },
     },
-  series : [
+  series : 
     {
       name:'',
       type:'line',
@@ -492,10 +492,9 @@ export const lineOption = {
                 }
             },
       //areaStyle: {normal: {}},
-      data:[20, 32, 10, 34]
+      data:''
     },
     
-  ]
 };
 
 //散点图数据

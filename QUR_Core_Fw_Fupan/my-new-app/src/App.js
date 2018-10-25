@@ -33,7 +33,8 @@ class App extends Component {
         time:new Date(),
         //XCCPie:pieOption2,
         selectName: defineArr[0].name,
-        avgAge:''
+        avgAge:'',
+        AverAge_Defect:lineOption
       };
       setInterval(function(){
  
@@ -124,6 +125,9 @@ class App extends Component {
             this.state.Other_defect.series[i].data = result[release].charts[3].series[i].data;
             this.state.Other_defect.series[i].name = result[release].charts[3].series[i].name;
         }
+
+        this.state.AverAge_Defect.xAxis.data = xAxis;
+        this.state.AverAge_Defect.series.data = result[release].charts[4].data;
         this.setState(this.state); 
       }.bind(this));
   }
@@ -233,7 +237,7 @@ class App extends Component {
                                     <div className="content-right"><LineReact option={this.state.Defect_Phase}/></div>
                                     <div className="content-left"><PieReact option={this.state.uefi_phase} /></div>
                                 </div>
-                                <div className="avg"><LineReact option={lineOption}/></div>
+                                <div className="avg"><LineReact option={this.state.AverAge_Defect}/></div>
                             </div>
                         </div>
                         <div className="mockdown">
