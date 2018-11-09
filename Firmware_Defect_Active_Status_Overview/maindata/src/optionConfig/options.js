@@ -290,9 +290,9 @@ export const mapOption = {
             //color:['#489eea','#d63c55','#7aab42','#a756e9'],
             right:'2%',
             bottom:'1%',
-            //type: 'scroll',
-            // width:30,
-            // height:20,
+            //type:'scroll',
+            //width:30,
+            //height:20,
             textStyle:{
                 fontSize:15,
                 color:'#fff'
