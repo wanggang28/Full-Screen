@@ -11,7 +11,7 @@ export const piePhaseOption = {
         left:10,
         top:6,
         textStyle:{
-            color:'#fff',
+            color:'#B6B6B6',
             fontFamily:'serif'
         }
     },
@@ -28,7 +28,7 @@ export const piePhaseOption = {
         trigger: 'item',
         formatter: "{b} : {c} ({d}%)"
     },
-    color:['#7ad0e8','#b2dd1c','#eb5141','#f3c21c','#2caf9b'],
+    color:['#0655eb','#0a44b3','#0b88c5','#5015da','#16bbce'],
     visualMap: {
         show: false,
         min: 80,
@@ -79,32 +79,36 @@ export const piePhaseOption = {
     ]
 };
 export const pieActionOption = {
-    title:{
-        text:'Action Breakdown',
-        left:1,
-        top:0,
-        textStyle:{
-            fontSize:13,
-            color:'#fff',
-            fontFamily:'serif'
-        }
-    },
+    // title:{
+    //     text:'Action Breackdown',
+    //     left:10,
+    //     top:6,
+    //     textStyle:{
+    //         color:'#B6B6B6',
+    //         fontFamily:'serif'
+    //     }
+    // },
     tooltip : {
         trigger: 'item',
         formatter: "{a} <br/>{b} : {c} ({d}%)"
     },
-    color:['#7ad0e8','#b2dd1c','#eb5141','#f3c21c','#2caf9b'],
+    color:['#0655eb','#0a44b3','#0b88c5','#5015da','#16bbce'],
     legend: {
+        show:false,
         orient: 'vertical',
         left: 'left',
-        data: []
+        top:'center',
+        textStyle:{
+            color:'#fff',
+        },
+        data: ''
     },
     series : [
         {
             name: '',
             type: 'pie',
-            radius : '75%',
-            center: ['50%', '61%'],
+            radius : '80%',
+            center: ['50%', '50%'],
             data:[],
             labelLine: {
                 normal: {
@@ -260,13 +264,13 @@ export const verticalbarOption2={
 }
 //水平柱状图数据
 export const barSummaryOption = {
-  color:['#1ff0c8'],  
+  color:['#0655eb'],  
   title:{
         text:'Defect Summary',
         left:10,
         top:6,
         textStyle:{
-            color:'#fff',
+            color:'#B6B6B6',
             fontFamily:'serif'
         }
     },
@@ -411,13 +415,13 @@ export const horizontalbarOption2 = {
 
 //平均defect数量
 export const lineOption = {
-  color:['#69c0ff'],
+  color:['rgb(0,136,212)'],
   title:{
         text:'AvgAge Trend',
         left:10,
         top:6,
         textStyle:{
-            color:'#fff',
+            color:'#B6B6B6',
             fontFamily:'serif'
         }
   },
@@ -484,15 +488,26 @@ export const lineOption = {
       name:'',
       type:'line',
       stack: '总量',
-      label: {
-                normal: {
-                  show:true,
-                  color:'#fff',
-                  position: 'top',
-                }
-            },
+      lineStyle:{    
+        normal:{
+            width:3,
+        }
+    },
+    itemStyle:{
+        normal:{
+            borderWidth:6
+        }
+    },
+    symbolSize: 6,
+    label: {
+        normal: {
+            show:true,
+            color:'#fff',
+            position: 'top',
+        }
+    },
       //areaStyle: {normal: {}},
-      data:''
+    data:''
     },
     
 };
@@ -595,7 +610,7 @@ export const stacklineOption={
         left:10,
         top:6,
         textStyle:{
-            color:'#fff',
+            color:'#B6B6B6',
             fontFamily:'serif'
         }
     },
@@ -607,8 +622,13 @@ export const stacklineOption={
     },
     legend: {
         top:10,
+        right:0,
+        icon: "rect", 
+        itemWidth: 23, 
+        itemHeight: 13, 
+        itemGap: 8,
         textStyle:{
-                color:'#fff'
+                color:'#B6B6B6',
             },
         data:['Total','Firmware Total','Core FW Total']
     },
@@ -658,48 +678,13 @@ export const stacklineOption={
         {
             name:'',
             type:'line',
-            label: {
-                normal: {
-                  show:true,
-                  color:'#fff',
-                  position: 'top',
-                }
-            },
+            smooth:true,
+            symbol: 'circle',
+            symbolSize: 7,
+            sampling: 'average',
             itemStyle: {
                 normal: {
-                    color: 'rgb(222, 60, 108)'
-                }
-            },
-            areaStyle: {
-                normal: {
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                        offset: 0,
-                        color: 'rgb(39, 42, 195)'
-                    }, {
-                        offset: 1,
-                        color: 'rgb(222, 60, 108)'
-                    }])
-                }
-            },
-            data:[]
-        },
-        {
-            name:'',
-            type:'line',
-            itemStyle: {
-                normal: {
-                    color: 'rgb(55, 195, 39)'
-                }
-            },
-            areaStyle: {
-                normal: {
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                        offset: 0,
-                        color: 'rgb(195, 184, 39)'
-                    }, {
-                        offset: 1,
-                        color: 'rgb(55, 195, 39)'
-                    }])
+                    color: '#0088d4'
                 }
             },
             label: {
@@ -709,6 +694,17 @@ export const stacklineOption={
                   position: 'top',
                 }
             },
+            // areaStyle: {
+            //     normal: {
+            //         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            //             offset: 0,
+            //             color: 'rgb(39, 42, 195)'
+            //         }, {
+            //             offset: 1,
+            //             color: 'rgb(222, 60, 108)'
+            //         }])
+            //     }
+            // },
             data:[]
         },
         {
@@ -716,20 +712,56 @@ export const stacklineOption={
             type:'line',
             itemStyle: {
                 normal: {
-                    color: 'rgb(255, 70, 131)'
+                    color: '#f9cf67'
                 }
             },
-            areaStyle: {
+            smooth:true,
+            symbol: 'circle',
+            symbolSize: 7,
+            sampling: 'average',
+            // areaStyle: {
+            //     normal: {
+            //         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            //             offset: 0,
+            //             color: 'rgb(195, 184, 39)'
+            //         }, {
+            //             offset: 1,
+            //             color: 'rgb(55, 195, 39)'
+            //         }])
+            //     }
+            // },
+            label: {
                 normal: {
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                        offset: 0,
-                        color: 'rgb(255, 158, 68)'
-                    }, {
-                        offset: 1,
-                        color: 'rgb(255, 70, 131)'
-                    }])
+                  show:true,
+                  color:'#fff',
+                  position: 'top',
                 }
             },
+            data:[]
+        },
+        {
+            name:'',
+            type:'line',
+            itemStyle: {
+                normal: {
+                    color: '#e92b77'
+                }
+            },
+            smooth:true,
+            symbol: 'circle',
+            symbolSize: 7,
+            sampling: 'average',
+            // areaStyle: {
+            //     normal: {
+            //         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            //             offset: 0,
+            //             color: 'rgb(255, 158, 68)'
+            //         }, {
+            //             offset: 1,
+            //             color: 'rgb(255, 70, 131)'
+            //         }])
+            //     }
+            // },
             label: {
                 normal: {
                   show:true,
@@ -748,13 +780,13 @@ export const stacklineOption={
 //defect phase图
 
 export const much_stackOption={
-    color:['#7ad0e8','#b2dd1c','#eb5141','#f3c21c','#2caf9b'],
+    color:['#0903ef','#0655eb','#51a4c1'], 
     title:{
         text:'Transfer Out Trend',
         left:10,
         top:6,
         textStyle:{
-            color:'#fff',
+            color:'#B6B6B6',
             fontFamily:'serif'
         }
     },
@@ -763,9 +795,13 @@ export const much_stackOption={
     },
     legend: {
         top:27,
-        right:50,
+        right:0,
+        icon: "rect", 
+        itemWidth: 23, 
+        itemHeight: 13, 
+        itemGap: 10,
         textStyle:{
-                color:'#fff'
+                color:'#B6B6B6'
             },
         data:['Bad Fix','LimCAN','Transfer Out']
     },
@@ -865,13 +901,13 @@ export const much_stackOption={
 //defect_code 图
 
 export const stackOption = {
-  color:['#de3c6c','#6739be','#f3c21c','#2caf9b'],  
+  color:['#0655eb','#4691e0','#f9cf67','#e92b77'], 
   title:{
         text:'Code Fixes and Non-Code Issue Trend',
         left:10,
         top:6,
         textStyle:{
-            color:'#fff',
+            color:'#B6B6B6',
             fontFamily:'serif'
         }
     },
@@ -884,11 +920,12 @@ export const stackOption = {
     legend: {
         top:27,
         // left:0,
-        right:0,
-        itemGap:0,
+        icon: "rect", 
+        itemWidth: 23, 
+        itemHeight: 13, 
+        itemGap: 3,
         textStyle:{
-                color:'#fff',
-                fontSize:10,
+                color:'#B6B6B6',
             },
         data: ''
     },
@@ -958,6 +995,7 @@ export const stackOption = {
             label: {
                 normal: {
                   show:false,
+                  color:'#fff',
                   position: 'inside',
                 }
             },
@@ -970,6 +1008,7 @@ export const stackOption = {
             label: {
                 normal: {
                   show:false,
+                  color:'#fff',
                   position: 'inside',
                 }
             },
@@ -979,9 +1018,21 @@ export const stackOption = {
             name:'',
             type:'line',
             yAxisIndex:1,
+            itemStyle:{
+                normal:{
+                    borderWidth:7
+                }
+            },
+            symbolSize: 7,
+            lineStyle:{    
+                normal:{
+                    width:3,
+                }
+            },
             label: {
                 normal: {
                   show:true,
+                  color:'#fff',
                   position: 'top',
                 }
             },
@@ -991,9 +1042,21 @@ export const stackOption = {
             name:'',
             type:'line',
             yAxisIndex:1,
+            lineStyle:{    
+                normal:{
+                    width:3,
+                }
+            },
+            itemStyle:{
+                normal:{
+                    borderWidth:6
+                }
+            },
+            symbolSize: 6,
             label: {
                 normal: {
                   show:true,
+                  color:'#fff',
                   position: 'top',
                 }
             },
@@ -1005,13 +1068,13 @@ export const stackOption = {
 //others 图
 
 export const muchlineOption={
-    color:['#7ad0e8','#b2dd1c','#eb5141','#f3c21c','#2caf9b'],
+    // color:['#7ad0e8','#b2dd1c','#eb5141','#f3c21c','#2caf9b'],
     title:{
         text:'Core Defect Trend by Phase',
         left:10,
         top:6,
         textStyle:{
-            color:'#fff',
+            color:'#B6B6B6',
             fontFamily:'serif'
         }
     },
@@ -1020,14 +1083,19 @@ export const muchlineOption={
     },
     legend: {
         top:10,
+        right:0,
+        icon: "rect", 
+        itemWidth: 23, 
+        itemHeight: 13, 
+        itemGap: 10,
         textStyle:{
-                color:'#fff'
+                color:'#B6B6B6'
             },
         data:['BBFV','SDV','SIT','SVT','Other Team']
     },
     grid: {
         left: '3%',
-        right:'1%',
+        right:'2%',
         top:'20%',
         bottom:'3%',
         containLabel: true
@@ -1039,25 +1107,26 @@ export const muchlineOption={
     },
     xAxis: {
         type: 'category',
-        boundaryGap: true,
+        boundaryGap: false,
         splitLine:{
 		    show:false
         },
         axisLabel:{
           
           textStyle:{
-             color:'#fff',
+             color:'#B6B6B6',
              
           }
         },
         axisLine:{
           lineStyle:{
-             color:'#fff'
+             color:'#B6B6B6'
           }
         },
         data: []
     },
     yAxis: {
+        show:false,
         type: 'value',
         axisLabel:{
           textStyle:{
@@ -1072,7 +1141,6 @@ export const muchlineOption={
         },
     },
     series: [
-        
         {
             name:'',
             type:'line',
@@ -1081,6 +1149,105 @@ export const muchlineOption={
                   show:true,
                   color:'#fff',
                   position: 'top',
+                }
+            },
+            smooth:true,
+            stack: '总量',
+            symbol: 'circle',
+            symbolSize: 5,
+            sampling: 'average',
+            areaStyle: {
+            normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: 'rgba(0, 136, 212, 0.3)'
+                }, {
+                    offset: 0.8,
+                    color: 'rgba(0, 136, 212, 0)'
+                }], false),
+                shadowColor: 'rgba(0, 0, 0, 0.1)',
+                shadowBlur: 10
+            }
+        },
+        itemStyle: {
+            normal: {
+                color: 'rgb(0,136,212)',
+                borderColor: 'rgba(0,136,212,0.2)',
+                borderWidth: 15
+
+            }
+        },
+            data:[]
+        },
+        {
+            name:'',
+            type:'line',
+            label: {
+                normal: {
+                  show:true,
+                  color:'#fff',
+                  position: 'top',
+                }
+            },
+            //smooth:true,
+            stack: '总量',
+            symbol: 'circle',
+            symbolSize: 5,
+            areaStyle: {
+            normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0.2,
+                    color: 'rgb(233, 43, 119,0.3)'
+                }, {
+                    offset: 0.8,
+                    color: 'rgba(233, 43, 119, 0)'
+                }], false),
+                shadowColor: 'rgba(0, 0, 0, 0.1)',
+                shadowBlur: 10
+            }
+        },
+        itemStyle: {
+            normal: {
+                color: 'rgb(233, 43, 119)',
+                borderColor: 'rgba(233, 43, 119,0.2)',
+                borderWidth: 15
+            }
+        },
+            data:[]
+        },
+        {
+            name:'',
+            type:'line',
+            label: {
+                normal: {
+                  show:true,
+                  color:'#fff',
+                  position: 'top',
+                }
+            },
+            smooth:true,
+            stack: '总量',
+            symbol: 'circle',
+            symbolSize: 5,
+            sampling: 'average',
+            itemStyle: {
+                normal: {
+                    color: 'rgb(243, 191, 58)',
+                    borderColor: 'rgba(243, 191, 58,0.2)',
+                    borderWidth: 15
+                }
+            },
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgb(243, 191, 58,0.3)'
+                    }, {
+                        offset: 0.8,
+                        color: 'rgb(243, 191, 58,0)'
+                    }]),
+                    shadowColor: 'rgba(0, 0, 0, 0.1)',
+                    shadowBlur: 10
                 }
             },
             data:[]
@@ -1095,6 +1262,32 @@ export const muchlineOption={
                   position: 'top',
                 }
             },
+            //smooth:true,
+            stack: '总量',
+            symbol: 'circle',
+            symbolSize: 5,
+            sampling: 'average',
+            areaStyle: {
+            normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: 'rgba(137, 189, 27, 0.3)'
+                }, {
+                    offset: 0.8,
+                    color: 'rgba(137, 189, 27, 0)'
+                }], false),
+                shadowColor: 'rgba(0, 0, 0, 0.1)',
+                shadowBlur: 5
+            }
+        },
+        itemStyle: {
+            normal: {
+                color: 'rgb(137,189,27)',
+                borderColor: 'rgba(137,189,2,0.27)',
+                borderWidth: 15
+
+            }
+        },
             data:[]
         },
         {
@@ -1107,29 +1300,28 @@ export const muchlineOption={
                   position: 'top',
                 }
             },
-            data:[]
-        },
-        {
-            name:'',
-            type:'line',
-            label: {
+            smooth:true,
+            stack: '总量',
+            symbol: 'circle',
+            symbolSize: 5,
+            sampling: 'average',
+            itemStyle: {
                 normal: {
-                  show:true,
-                  color:'#fff',
-                  position: 'top',
+                    color: 'rgb(167, 86, 233)',
+                    borderColor: 'rgba(167, 86, 233,0.2)',
+                    borderWidth: 15
                 }
             },
-            data:[]
-        },
-        {
-            name:'',
-            type:'line',
-            label: {
-                normal: {
-                  show:true,
-                  color:'#fff',
-                  position: 'top',
-                }
+            areaStyle: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: 'rgb(167, 86, 233,0.3)'
+                }, {
+                    offset: 0.8,
+                    color: 'rgb(167, 86, 233,0)'
+                }]),
+                shadowColor: 'rgba(0, 0, 0, 0.1)',
+                shadowBlur: 10
             },
             data:[]
         },
@@ -1342,6 +1534,15 @@ export const shuiqiuOption = {
         type: 'liquidFill',
         data: [0], 
         radius: '75%',
+        color: ['#0903ef'],
+        outline: {
+            // show: false
+            borderDistance: 7, //内环padding值
+            itemStyle: {
+                borderWidth: 7, //圆边线宽度
+                borderColor: '#0903ef',
+            },
+        },
         center: ['50%', '58%'],
         label:{
             position: ['50%', '60%'],
@@ -1365,6 +1566,15 @@ export const LiquidfillOption = {
     series: [{
         type: 'liquidFill',
         data: [0], 
+        color: ['#0903ef'],
+        outline: {
+            // show: false
+            borderDistance: 7, //内环padding值
+            itemStyle: {
+                borderWidth: 7, //圆边线宽度
+                borderColor: '#0903ef',
+            },
+        },
         radius: '75%',
         center: ['50%', '58%'],
         label:{
@@ -1376,21 +1586,20 @@ export const LiquidfillOption = {
 
 
 export const transferoutOption={
-    title:{
-        text:'Transfer Out',
-        left:1,
-        top:0,
-        textStyle:{
-            fontSize:13,
-            color:'#fff',
-            fontFamily:'serif'
-        }
-    },
+    // title:{
+    //     text:'Transfer Out Trend',
+    //     left:10,
+    //     top:0,
+    //     textStyle:{
+    //         color:'#B6B6B6',
+    //         fontFamily:'serif'
+    //     }
+    // },
     tooltip : {
         trigger: 'item',
         formatter: "{a} <br/>{b} : {c} ({d}%)"
     },
-    color:['#7ad0e8','#b2dd1c','#eb5141','#f3c21c','#2caf9b'],
+    color:['#0655eb','#0a44b3','#0b88c5','#5015da','#16bbce'], 
     legend: {
         orient: 'vertical',
         left: 'left',
@@ -1400,8 +1609,8 @@ export const transferoutOption={
         {
             name: '',
             type: 'pie',
-            radius : '75%',
-            center: ['50%', '61%'],
+            radius : '80%',
+            center: ['50%', '50%'],
             data:[],
             labelLine: {
                 normal: {

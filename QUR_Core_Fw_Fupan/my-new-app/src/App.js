@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import asyncComponent from './AsyncComponent'
 import $ from 'jquery'
-import earth from './images/background.png'
+//import earth from './images/background.png'
 import avgimg from './images/add.png'
 import { transferoutOption,LiquidfillOption,pieActionOption,shuiqiuOption,billOption,funnelOption,muchlineOption,stacklineOption,actionOption,much_stackOption,stackOption,OthersOption,piePhaseOption,pieOption2, verticalbarOption1,verticalbarOption2,barSummaryOption,horizontalbarOption2,lineOption, scatterOption, mapOption, radarOption, candlestickOption } from './optionConfig/options'
 const PieReact = asyncComponent(() => import(/* webpackChunkName: "PieReact" */'./EchartsDemo/PieReact'))  //饼图组件
@@ -153,11 +153,11 @@ class App extends Component {
     // }
     var serverRequest = $.get('http://fw.core.lenovo.com/dv/table/grid?name='+release+'_action_breakdown&q=18D%20Total', function (result) {
         var data = result.chart.data;
+        var legend=result.chart.xAxis;
         this.state.uefi_action_breakdown.series[0].data = data;
+        this.state.uefi_action_breakdown.legend.data = legend;
         var per=Number(result.table.data[2]['%'])/100;
-        console.log(per)
         this.state.Non_CodeIssue.series[0].data[0]=per;
-        console.log(this.state.Non_CodeIssue.series[0].data[0])
         this.setState(this.state); 
       }.bind(this));
   }
@@ -214,16 +214,16 @@ class App extends Component {
     });
     return (
         
-            <div className="Full-screen" style={{width: this.state.width, height: this.state.height,backgroundImage:'url(' + earth + ')'}}>
+            <div className="Full-screen" style={{width: this.state.width, height: this.state.height}}>
                 <div className="banner">
                     <div className="layout">
                         <div className="title">
                             <div className="datetime" id="datetime">    
                                 <div className="option"><select value={this.state.selectName} onChange={this.changeName.bind(this)}>{names}</select></div>
-                                <div className="title-Block">18D {this.state.selectName.toLocaleUpperCase()} Core Fw Fupan</div>
-                                <div className="time-average">
-                                <span className="average"><img src={avgimg} alt="" width="30px" height="25px"/><span className="defect-average">{this.state.avgAge}</span></span>
-                                <span className="time">{this.state.time.toLocaleDateString().replace(/\//g,".")} {this.state.time.toLocaleTimeString('chinese',{hour12:false})}</span>
+                                <div className="title-Block">19A {this.state.selectName.toLocaleUpperCase()} Core Fw Fupan</div>
+                                <div className="time-average">{this.state.time.toLocaleDateString().replace(/\//g,".")} {this.state.time.toLocaleTimeString('chinese',{hour12:false})}
+                                {/*<span className="average"><img src={avgimg} alt="" width="30px" height="25px"/><span className="defect-average">{this.state.avgAge}</span></span>*/}
+                                {/*<span className="time"></span>*/}
                                 </div>
                             </div>
                         </div>
@@ -234,8 +234,8 @@ class App extends Component {
                             </div>
                             <div className="Core">
                                 <div className="core-defect">
-                                    <div className="content-right"><LineReact option={this.state.Defect_Phase}/></div>
-                                    <div className="content-left"><PieReact option={this.state.uefi_phase} /></div>
+                                    <div className="core-right"><LineReact option={this.state.Defect_Phase}/></div>
+                                    <div className="core-left"><PieReact option={this.state.uefi_phase} /></div>
                                 </div>
                                 <div className="avg"><LineReact option={this.state.AverAge_Defect}/></div>
                             </div>
